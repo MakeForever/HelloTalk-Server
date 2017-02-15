@@ -1,5 +1,5 @@
-import { encrypt, decrypt } from './crypto';
-
+import { encrypt, decrypt, Hashing } from './crypto';
+import { selectUser, updateCertified } from './db';
 
 export const validateRegistration  = ( { name, id, password, gender } ) => {
     const validation = { result: true };
@@ -22,13 +22,30 @@ export const validateRegistration  = ( { name, id, password, gender } ) => {
     }
     if(validation.result)
         validation.fields = {
-            name, id , password, gender ,
-            isQualified : 0
+            name, id , password: Hashing(password), gender ,
+            Certified : 0
         }
     return validation;
 }
-export const checkAuthUrl = ( original, text ) => {
+export const checkAuthUrl = ( cryptogram, success, fail ) => {
+    const email = decrypt(cryptogram);
+    selectUser({ id: email })
+    .then(( rs ) => {
+        if( !rs || !rs[0] ) {
+            throw new Error('worng url address!');
+        }
+        if(rs[0].Certified) {
+            throw new Error('already Certified');
+        }
+        updateCertified({ id: email }, { Certified: 1 })
+          .then( (result) => {
+            success('you are now Certified');
+          })
+    })
 
+    .catch(( err ) => {
+        fail(err.message);
+    })
 }
 export const createAuthUrl = ( original ) => {
     return encrypt(original);

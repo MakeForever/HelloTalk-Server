@@ -1,4 +1,5 @@
 import  crypto from 'crypto';
+
 const algorithm = 'aes-256-ctr' , password = 'd6F3Efeqqweasccf13tg34';
 
 export const encrypt = (text) => {
@@ -14,5 +15,11 @@ export const decrypt = (text) => {
   dec += decipher.final('utf8');
   return dec;
 }
- 
-export default { encrypt, decrypt }
+
+export const Hashing = ( text ) => {
+  let hash = crypto.createHash('sha256')
+  hash.update(text);
+  return hash.digest('hex');
+}
+
+export default { encrypt, decrypt, Hashing }

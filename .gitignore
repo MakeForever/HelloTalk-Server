@@ -1,5 +1,5 @@
 
-# Created by https://www.gitignore.io/api/node
+# Created by https://www.gitignore.io/api/visualstudiocode,node
 
 ### Node ###
 # Logs
@@ -56,5 +56,15 @@ jspm_packages
 # dotenv environment variables file
 .env
 
+.DS_Store
 
-# End of https://www.gitignore.io/api/node
+### VisualStudioCode ###
+
+
+.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# End of https://www.gitignore.io/api/visualstudiocode,node
