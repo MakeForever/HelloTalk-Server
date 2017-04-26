@@ -6,9 +6,12 @@ const db = knex({
         host : '127.0.0.1',
         user : 'root',
         password : '',
-        database : 'chatApp'
+        database : 'chat_server'
   }
 })
 
+// db.on( 'query', function( queryData ) {
+//     console.log( queryData );
+// });
 
 export default db;

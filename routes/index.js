@@ -1,19 +1,95 @@
-'use strict'
+
 
 import express from 'express';
-import db from '../utils/knex';
-import { insert, registrationUser, updateCertified, checkLogin } from '../utils/db';
-import { getSuccess, getFail, validateRegistration , createAuthUrl, checkAuthUrl  } from '../utils/index';
+import { insert, subscribeUser, updateCertified, checkLogin } from '../utils/db/db';
+import { authEmailTemplete, getSuccess, getFail, validateRegistration , createAuthUrl,
+     checkAuthUrl, authorization  } from '../utils/index';
 import { transporter, createMailOptions } from '../utils/nodemailerConfig';
 import { Hashing } from '../utils/crypto';
+import debug from 'debug';
+import { io } from "../index";
+import jade from 'jade';
+
+import multer from 'multer';
+import redis from '../utils/db/redis';
+import sharp from 'sharp';
+import fileConfig from '../file_config';
+const Promise = require('bluebird');
+const fs = Promise.promisifyAll(require('fs'));
+const upload = multer( { dest: 'uploads/' } );
 const router = express.Router();
+const dubuger = debug('router');
+
 
 //TODO: 나중에 성공 실패 페이지를 만들것 getSuccess, getFail을 view를 보여주는 함수로 바꾸어야 한다.
 router.get('/auth', ( req, res, next ) => {
-    checkAuthUrl(req.query.code, getSuccess(res), getFail(res));
+    checkAuthUrl(req.query.code, getSuccess(res), getFail(res), (rs) => res.send(rs) ) ;
 })
+router.post('/upload/photo', upload.single('image'), ( req, res, next ) => {
 
+    const token = req.headers.authorization;
+    const id  = authorization(token);
+    redis.hget('idList', id).then( ( value ) => {
+        if( value !== token ) {
+            throw new Error;
+        }
+        const file = req.file;
+        if( !file )
+            throw new Error('file is empty');
+        return file;
+        }).then( (file) => {
+        const promise  = (path) => {
+            return new Promise( (resolve, reject) => {
+                fs.stat(path, (err, stats) => {
+                    if(err) reject(path);
+                    resolve(path);    
+                });
+            });
+        };
+    
+        const filePath = `public/images/profile/${id}`;
+        return promise(filePath);
+        // if(!stat) {
+        //     fs.mkdirAsync(filePath).then( () => {
+        //            return fs.rename(file.path, `${filePath}/default.png`);
+        //     }).then( () => {
+        //         res.send(200);
+        //     }).catch( err => {
+        //         throw new Error;
+        //      });
+        // } else {
+        //     fs.rename(file.path, `${filePath}/default.png`);
+        //     }
+    }).catch( path => {
+        fs.mkdirAsync(path);
+        return path;
+    })
+    .then( path => {
+        return new Promise ( (resolve, reject) => {
+            const filename = 'default.png';
+            fs.rename(req.file.path, `${path}/${filename}`, ( err ) => {
+                if(err) reject(err);
+                resolve({path, name: filename});
+            })
+        }) 
+    })
+    .then( img => {
+        console.log(img);
+        const resize = parseInt(fileConfig.resize);
+        sharp(`${img.path}/${img.name}`)
+        .resize(resize, resize)
+        .toFile(`${img.path}/${resize}x${resize}.png`, (err, info) => {
+            if(err) console.log(err);
+            console.log(info);
+        });
+    }).then( () => { 
+        res.send('image upload complete');
+    }).catch( err => {
+        res.status(500).send(err);
+    });
+});
 router.post('/login', ( req, res, next ) => {
+    dubuger(`POST /api/login  || id: ${req.body.id} password : ${req.body.password} ` );
     const id = req.body.id;
     const hashedPassword = Hashing(req.body.password);
     checkLogin(id, hashedPassword, getSuccess(res), getFail(res));
@@ -21,25 +97,26 @@ router.post('/login', ( req, res, next ) => {
 
 //회원가입
 router.post('/user', ( req, res, next ) => {
+    dubuger(`POST /api/user` );
     const validation = validateRegistration(req.body);
+    dubuger(`validation result : ${validation.result} : message ${validation.message}`);
     const fields = validation.fields;
-
     if(!validation.result){
-        res.send(500, validation.message);
+        res.json( 500, validation.message );
     }
     else {
-         registrationUser( (rs) => {
+         subscribeUser( (rs) => {
          insert(rs, 'Users')
          .then( (result) => {
-            transporter.sendMail(createMailOptions({...rs, address:createAuthUrl(rs.id)}), (err, info) => {
-                if (err) {
-                    return console.log(err);
-                }
-                console.log('Message %s sent: %s', info.messageId, info.response);
-            });
-            
-            res.send('register success');
-
+                
+                transporter.sendMail(createMailOptions({...rs, address: createAuthUrl(rs.id)}, authEmailTemplete(createAuthUrl(rs.id))), (err, info) => {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    console.log('Message %s sent: %s', info.messageId, info.response);
+                    });
+                res.json({ message : 'register success' }); 
+              
          })
          }, getFail(res), fields);
     }
@@ -51,4 +128,5 @@ router.delete('/user', ( req, res , next ) => {
 router.put('/user', ( req, res, next ) => {
 
 })
+
 export default router;
