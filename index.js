@@ -3,16 +3,32 @@
 
 import express from 'express';
 import bodyParser from 'body-parser';
-import indexRouter from'./routes/index';
+import indexRouter from './routes/index';
+
+import testRouter from './routes/test'
+
+import http from 'http';
+import loginio from './utils/socket'
 
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }))
+
+const server = http.Server(app);
+
+const port = process.env.PORT || 8888;
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use('/api/', indexRouter);
+app.use('/', testRouter);
 
-app.listen(8080);
+export const io = loginio(server);
 
-export default app;
+server.listen(port, ()=> {
+    console.log(`server start ${port}`);
+});
+
+
+export default server;

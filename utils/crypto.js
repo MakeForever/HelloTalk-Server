@@ -1,6 +1,13 @@
-import  crypto from 'crypto';
+import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
+import config from '../config';
 
 const algorithm = 'aes-256-ctr' , password = 'd6F3Efeqqweasccf13tg34';
+
+export const createToken = ( info ) => {
+  var token = jwt.sign(info.id, config.secret);
+  return token;
+}
 
 export const encrypt = (text) => {
   let cipher = crypto.createCipher(algorithm,password)
@@ -22,4 +29,4 @@ export const Hashing = ( text ) => {
   return hash.digest('hex');
 }
 
-export default { encrypt, decrypt, Hashing }
+export default { encrypt, decrypt, Hashing, createToken }
