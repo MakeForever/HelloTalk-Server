@@ -33,7 +33,7 @@ export const validateRegistration  = ( { name, id, password, gender } ) => {
     if(validation.result)
         validation.fields = {
             name, id , password: Hashing(password), gender ,
-            Certified : 0
+            certified : 0
         }
     return validation;
 }
@@ -44,10 +44,10 @@ export const checkAuthUrl = ( cryptogram, success, fail, test ) => {
         if( !rs || !rs[0] ) {
             throw new Error('worng url address!');
         }
-        if(rs[0].Certified) {
+        if(rs[0].certified) {
             throw new Error('already Certified');
         }
-        updateCertified({ id: email }, { Certified: 1 })
+        updateCertified({ id: email }, { certified: 1 })
           .then( (result) => {
             test('<script>alert("인증되었습니다.")</script>');
           })

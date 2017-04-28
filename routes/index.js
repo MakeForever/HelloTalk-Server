@@ -49,17 +49,6 @@ router.post('/upload/photo', upload.single('image'), ( req, res, next ) => {
     
         const filePath = `public/images/profile/${id}`;
         return promise(filePath);
-        // if(!stat) {
-        //     fs.mkdirAsync(filePath).then( () => {
-        //            return fs.rename(file.path, `${filePath}/default.png`);
-        //     }).then( () => {
-        //         res.send(200);
-        //     }).catch( err => {
-        //         throw new Error;
-        //      });
-        // } else {
-        //     fs.rename(file.path, `${filePath}/default.png`);
-        //     }
     }).catch( path => {
         fs.mkdirAsync(path);
         return path;
