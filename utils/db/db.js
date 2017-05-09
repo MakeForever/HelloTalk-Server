@@ -53,12 +53,13 @@ export const checkLogin = (userId, hashedPassword, success, fail) => {
             } else if (hashedPassword !== result[0].password) {
                 throw new Error('password not collect!');
             }
+            dubuger( `user ${userId} just attmpt to login ${result[0].name}`);
             const token = createToken({
                 id: userId,
                 name: result[0].name
             });
             const loginCount = result[0].first_login;
-            redis.hset('idList', userId, token);
+            redis.hset('token_list', userId, token);
             let userInfo = {
                 message: 'login complete!',
                 token: token,

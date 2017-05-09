@@ -5,7 +5,7 @@ import config from '../config';
 const algorithm = 'aes-256-ctr' , password = 'd6F3Efeqqweasccf13tg34';
 
 export const createToken = ( info ) => {
-  var token = jwt.sign(info.id, config.secret);
+  var token = jwt.sign(info, config.secret);
   return token;
 }
 
