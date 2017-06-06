@@ -28,8 +28,9 @@ router.get('/auth', ( req, res, next ) => {
 router.post('/upload/photo', upload.single('image'), ( req, res, next ) => {
 
     const token = req.headers.authorization;
-    const id  = authorization(token);
-    redis.hget('idList', id).then( ( value ) => {
+    const user  = authorization(token);
+    redis.hget('token_list', user.id).then( ( value ) => {
+        // console.log(`id :${id} : val ${value} : token ${token}`)
         if( value !== token ) {
             throw new Error;
         }
@@ -47,7 +48,7 @@ router.post('/upload/photo', upload.single('image'), ( req, res, next ) => {
             });
         };
     
-        const filePath = `public/images/profile/${id}`;
+        const filePath = `public/images/profile/${user.id}`;
         return promise(filePath);
     }).catch( path => {
         fs.mkdirAsync(path);
@@ -95,7 +96,7 @@ router.post('/user', ( req, res, next ) => {
     }
     else {
          subscribeUser( (rs) => {
-         insert(rs, 'Users')
+         insert(rs, 'users')
          .then( (result) => {
                 
                 transporter.sendMail(createMailOptions({...rs, address: createAuthUrl(rs.id)}, authEmailTemplete(createAuthUrl(rs.id))), (err, info) => {

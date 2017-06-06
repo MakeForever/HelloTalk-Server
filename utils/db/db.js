@@ -12,7 +12,9 @@ const dubuger = debug('router/db');
 export const selectUser = (selectField, whereFields) => {
     return knex.select(selectField).from('users').where(whereFields);
 }
-
+export const getCount = (cloumn, from, whereFields ) => {
+    return knex.count(cloumn).from(from).where(whereFields);
+}
 
 export const insert = (fields, table) => {
     return knex.insert(fields).into(table)
@@ -23,24 +25,78 @@ export const updateCertified = (whereQuery, updateQuery) => {
 export const updateFirstLogin = (updateQuery, whereQuery) => {
     return knex('users').update(updateQuery).where(whereQuery);
 };
+export const updateMessage = ( updateQuery, whereQuery ) => {
+    
+};
 
+export const insertChatMembers = ( fields, table ) => {
+    return knex.insert(fie)
+}
+export const insertChatRoom = ( fields, table ) => {
+
+}
 //FIXME: db는 쿼리만 리턴하면 된다 그 이외에 로직은 index로 빼자
 export const subscribeUser = (success, fail, fields) => {
     knex.from('Users').where('id', fields.id)
-        .then((rows) => {
-            if (rows.length) {
-                throw new Error('id already exists');
-            }
-            success(fields);
-        })
-        .catch((err) => {
-            dubuger(err.message);
-            fail({
-                message: err.message
-            });
-        })
+        // .then((rows) => {
+        //     if (rows.length) {
+        //         throw new Error('id already exists');
+        //     }
+        //     success(fields);
+        // })
+        // .catch((err) => {
+        //     dubuger(err.message);
+        //     fail({
+        //         message: err.message
+        //     });
+        // })
+        // table.string("chat_id")
+        // table.string("message_id")
+        // table.string('creator_id')
+        // table.string('message_content')
+        // table.integer('message_type')
+        // table.string("chat_type")
 }
-
+export const messageFieldsCreator = ( data ) => {
+    return {
+        chat_id: data.chat_id,
+        message_id: data.message_id,
+        creator_id: data.creator_id,
+        message_content: data.message_content,
+        message_type: data.message_type,
+        read_count: data.is_read
+    }
+}
+export const chatRoomfieldsCreator = ( data ) => {
+    return {
+        chat_id: data.chat_id,
+        chat_type: data.chat_type
+    }
+}
+export const chatMemebersFieldsCreator = ( members, chatId ) => {
+    let result = [];
+    for( let member of members ) {
+        result.push({user_id:member.user_id, chat_id:chatId});
+    }
+    return result;
+}
+export const insertMessage = ( fields ) => {
+    const message = messageFieldsCreator(fields.message);
+    insert(message, 'message')
+    .then( (result) => {
+        getCount('chat_id as count','chat_room', { chat_id:fields.chat_room.chat_id }).then( rs => {
+            if( rs[0].count < 1 ) {
+                Promise.all([
+                    insert(chatRoomfieldsCreator(fields.chat_room), 'chat_room'),
+                    insert(chatMemebersFieldsCreator(fields.members, fields.chat_id),'chat_members')
+                    ])
+            } 
+        })
+    })
+    .catch( err => {
+        console.log(err);
+    })
+}
 export const checkLogin = (userId, hashedPassword, success, fail) => {
     selectUser('*', {
             id: userId
@@ -105,5 +161,7 @@ export default {
     subscribeUser,
     updateCertified,
     selectUser,
-    checkLogin
+    checkLogin,
+    insertMessage,
+    messageFieldsCreator
 }

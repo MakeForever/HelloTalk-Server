@@ -1,40 +1,30 @@
 import socketIo from 'socket.io';
 import debug from 'debug';
-import redis from './db/redis'
+import redis, { addChatToRedis, getSocketId } from './db/redis'
 import jwt from 'jsonwebtoken';
 import config from '../config';
-import {
-  selectUser
-} from './db/db';
+import { selectUser } from './db/db';
 import fs from 'fs';
 import path from 'path';
+import { dataMessage, fcm, sendNotification } from './fcm';
 import fileConfig from '../file_config';
+import { insertMessage, messageFieldsCreator } from './db/db';
 const dubuger = debug('socket.io');
 const createSocket = (server) => {
   let io = new socketIo(server);
   io.use((socket, next) => {
-    const token = socket.handshake.query.token;
     try {
-      if (token) {
-        jwt.verify(token, config.secret, (err, decoded) => {
+      const query = socket.handshake.query;
+      if (query) {
+        jwt.verify(query.jwt_token, config.secret, (err, decoded) => {
           if (err) {
             dubuger(`token invaild`);
-            throw new Error('token invaild');
+            // throw new Error('token invaild');
           } else {
-            dubuger(`decoded id ${decoded.id}  name : ${decoded.name}`)
-            // redis.hget('idList', decoded).then((value) => {
-            //   if (value === socket.handshake.query.token){
-            //     dubuger(`token check success`);
-            //     socket.name = decoded;
-            //     dubuger(`socket id ${ socket.id }`);
-            //     dubuger(`socket name ${ socket.name }`);
-            //     next();
-            //   } else {
-            //     throw new Error('token not founded');
-            //   }
-            // })
+          
             socket.info = decoded;
             redis.hset('socket_list', decoded.id, socket.id);
+            redis.hset('fire_base_token_list', decoded.id, query.fire_base_token);
             next();
           }
         })
@@ -48,7 +38,15 @@ const createSocket = (server) => {
   });
 
   io.on('connection', (socket) => {
+    dubuger(`socket info ${socket.info.id}  name : ${socket.info.name}`)
     dubuger(`socket connected socket id : ${socket.id}`);
+    redis.LRANGE(`${socket.info.id}-messages`, 0, -1).then( results => {
+      for( let result of results ) {
+        socket.emit('invite_to_personal_chat', JSON.parse(result) );
+        // console.log(JSON.parse(result));
+      }
+    })
+    redis.del(`${socket.info.id}-messages`);
     socket.on('chat message', (data) => {
       console.log(data);
     });
@@ -104,52 +102,29 @@ const createSocket = (server) => {
         })
       });
     });
-    socket.on('send_chat', data => {
-      const val = JSON.parse(data);
-
-      if (!!val.members) {
-        if (redis.exists(val.chatTableName)) {
-          redis.sadd('chat_list', val.chatTableName);
-          redis.sadd(val.chatTableName, [...val.members, val.sender])
-        }
-        for (let member of val.members) {
-          dubuger(`member :  ${member}`);
-          redis.hget('socket_list', member).then((value) => {
-            dubuger(`value :  ${value}`);
-            if (!value) {
-              //TODO : notification
-            }
-            
-            if (io.sockets.connected[value]) {
-              dubuger(`is connected :  ${member}`);
-              io.sockets.connected[value].emit('receive_chat', val);
-            }
-          })
-        }
-      } else {
-        redis.smembers(val.chatTableName, (err, values) => {
-          for (const member of values) {
-            redis.hget('socket_list', member).then((value) => {
-              dubuger(`value :  ${value}`);
-              if (!value) {
-                //TODO : notification
-              }
-              if ((val.sender !== member ) && io.sockets.connected[value]) {
-                dubuger(`is connected :  ${member}`);
-                io.sockets.connected[value].emit('receive_chat', val);
-              }
-            })
-          }
-        })
-      }
-      socket.emit("chat_result", {
-        result: true,
-        insertedChatRowNumber: val.insertedChatRowNumber,
-        chatTableName: val.chatTableName
-      });
+    socket.on('invite_to_personal_chat', data => {
+      dubuger(`invite_to_chat`);
+      const convertedData = JSON.parse(data);
+      // insertMessage(convertedData);
+      // console.log(convertedData);
+      const message = convertedData.message;
+      const chatRoom = convertedData.chat_room;
+      const receive = convertedData.receive;
+      const from = convertedData.from;
+      sendChatToMember(convertedData, io, socket, convertedData.receive.user_id, createSocketResultData(true, message.message_id, chatRoom.chat_id), 'invite_to_personal_chat');
+      // sendChatToMembers(convertedData, io, socket, convertedData.members, createSocketResultData(true, convertedData.message_id, convertedData.chat_id), 'invite_to_chat');
     })
+    socket.on('chat_read', data => {
+      const mData = JSON.parse(data);
+      const chat_id = mData.chat_id;
+      const messageIdList = mData.message_id_list;
+      const sender = mData.from;
+      dubuger(`chat_read ${sender}` );
+      sendChatToMember(mData, io, socket, sender, null, 'chat_read');
 
-    socket.on('disconnect', (test) => {
+    })
+   
+    socket.on('disconnect', () => {
       redis.hdel('socket_list', socket.info.id);
       dubuger(`disconnect ${socket.info.name}`);
     });
@@ -172,5 +147,51 @@ const profileImageRead = (user) => {
     })
   });
 }
+const createSocketResultData = (result, message_id, chat_id) => {
+  return {
+    result,
+    message_id,
+    chat_id
+  }
+}
+const sendChatToMember = (data, io, socket, member, chatResult, emitParam) => {
+  getSocketId(member).then(id => {
+    dubuger(`id ${id}`);
+    sendChat(member, id, io, emitParam, data);
+  })
+  if( !!chatResult ) {
+    socket.emit("invite_result", chatResult);
+  }
+}
+const sendChatToMembers = (data, io, socket, members, chatResult, emitParam) => {
+  for (let member of members) {
+    if (member.user_id === data.creator_id) {
+      return;
+    }
+    getSocketId(member.user_id).then( id => {
+      sendChat(member.user_id, id, io, emitParam, data);
+    })
+  }
+  socket.emit("invite_result", chatResult);
+}
 
+const sendChat = (userId, socketId, io, emitParam, data) => {
+  if( io.sockets.connected[socketId]) {
+    dubuger(`socketId`)
+      io.sockets.connected[socketId].emit(emitParam, data);
+  } else {
+    dubuger(`userId`)
+      redis.RPUSH(`${userId}-messages`, JSON.stringify(data)).then( token => {
+        return redis.hget('fire_base_token_list', userId);
+      }).then( token => {
+        console.log(`notification result `)
+        const message = dataMessage(token, {hi:'hello world', chat_type:1});
+        return sendNotification(message);
+      }).then( result => {
+        console.log(`notification success`)
+      }).catch( err =>{
+        console.log(`err ${err}`);
+      })
+  }
+}
 export default createSocket

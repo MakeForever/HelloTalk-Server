@@ -6,7 +6,7 @@
   "scripts": {
     "start": "babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "debug": "DEBUG=router,router/*,socket.io NODE_DEBUG=fs babel-node index.js"
+    "debug": "DEBUG=router,router/*,socket.io NODE_DEBUG=fs nodemon index.js --exec babel-node  "
   },
   "author": "",
   "license": "ISC",
@@ -33,6 +33,7 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^3.5.0",
+    "fcm-push": "^1.1.2",
     "gm": "^1.23.0",
     "jade": "^1.11.0",
     "mocha": "^3.2.0",

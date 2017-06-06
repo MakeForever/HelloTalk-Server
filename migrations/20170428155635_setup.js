@@ -11,12 +11,36 @@ exports.up = function(knex, Promise) {
         table.boolean('gender')
         table.boolean('certified').defaultTo(false)
         table.boolean('has_pic').defaultTo(false)
-      })
+      }),
+      knex.schema.withSchema('chat_server').createTable('chat_room', function(table) {
+        table.string("chat_id").primary()
+        table.string("chat_type")
+        table.timestamps()
+      }),
+      knex.schema.withSchema('chat_server').createTable('message', function(table) {
+        table.increments();
+        table.string("chat_id")
+        table.string("message_id")
+        table.string('creator_id')
+        table.string('message_content')
+        table.integer('message_type')
+        table.timestamps()
+      }),
+      knex.schema.withSchema('chat_server').createTable('chat_members', function(table) {
+        table.increments()
+        table.string('chat_id')
+        table.string('user_id')
+        table.timestamps()
+      }),
+
   ])
 };
 
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('users')
+    knex.schema.dropTable('users'),
+    knex.schema.dropTable('message'),
+    knex.schema.dropTable('chat_room'),
+    knex.schema.dropTable('chat_members')
   ])
 };
