@@ -3,9 +3,9 @@ import Debug from 'debug';
 import fs from 'fs';
 import path from 'path';
 import jwt from 'jsonwebtoken';
-import redis, { getSocketId } from './db/redis';
+import redis, { getSocketId, isLogin } from './db/redis';
 import config from '../config';
-import { selectUser } from './db/db';
+import { selectUser, createChatRoom, insertMessage, readMessage, addFriend, insertPersonalMessage, insert, del } from './db/db';
 import { dataMessage, sendNotification } from './fcm';
 import fileConfig from '../file_config';
 import { getProfileImage } from './index';
@@ -39,18 +39,22 @@ const createSocket = (server) => {
   io.on('connection', (socket) => {
     debug(`socket info ${socket.info.id}  name : ${socket.info.name}`);
     debug(`socket connected socket id : ${socket.id}`);
-    redis.LRANGE(`${socket.info.id}-messages`, 0, -1).then((results) => {
-      for (const result of results) {
-        const data = JSON.parse(result);
-        const event = data.event;
-        socket.emit(event, result);
-        // console.log(JSON.parse(result));
-      }
-    });
-    redis.del(`${socket.info.id}-messages`);
-    socket.on('chat message', (data) => {
-      console.log(data);
-    });
+    redis.llen(`${socket.info.id}-messages`)
+    .then( size => {
+      if ( size > 0 ) 
+        return redis.LRANGE(`${socket.info.id}-messages`, 0, -1);
+      else
+        throw `${socket.info.id}-messages is empty`
+    })
+   .then( results => {
+      socket.emit('read_all_event', JSON.stringify(results), () => {
+        redis.del(`${socket.info.id}-messages`);
+      });
+    })
+    .catch ( err => debug(err) );
+    
+    // redis.del(`${socket.info.id}-messages`);
+    
 
     socket.on('search_friends', (data) => {
       try {
@@ -112,8 +116,9 @@ const createSocket = (server) => {
       const sender = convertedData.chatRoom.talkTo;
       const chatRoom = convertedData.chatRoom;
       const receiver = convertedData.receiver;
-      test( [ sender ] ).then ( () => {
+      findUserImg( [ sender ] ).then ( () => {
         sendToMember( receiver.id, sendData( JSON.stringify(convertedData), io, socket, 'invite_to_personal_chat' ) );
+        insertPersonalMessage(convertedData);
       }).catch( err => debug(`err ${err}`))
     });
 
@@ -122,24 +127,28 @@ const createSocket = (server) => {
       const parsedData = JSON.parse(data);
       const chatRoom  = parsedData.chatRoom;
       const users = chatRoom.users;
-      const usersId = users.map( obj => obj.id);
+      const usersId = users.map( obj => obj.id );
       redis.sadd(chatRoom.chatId, usersId).then((result) => {
         
       });
       
-      test( users ).then( () => {
+      findUserImg( users ).then( () => {
         sendToMembers( parsedData.sender, usersId, sendData( JSON.stringify(parsedData), io, socket, 'invite_group_chat' ) );
+        createChatRoom(parsedData);
         ack(true);
       });
     });
     socket.on('send_group_message', data => {
       debug('send_group_message');
       const convertedData = JSON.parse(data);
+      console.log(convertedData)
       const message = convertedData.message;
       const chatRoom = convertedData.chat_room;
       redis.SMEMBERS(message.chatId).then( members => {
         sendToMembers( message.creatorId, members, sendData( data, io, socket, 'send_group_message' ) );
+        insertMessage(convertedData)
       });
+
     });
     socket.on('chat_read', (data) => {
       debug(`chat_read`);
@@ -147,15 +156,68 @@ const createSocket = (server) => {
       const chatId = mData.chat_id;
       const chatType = mData.chatType;
       const messageIdList = mData.messages;
-      const sender = mData.from;
+      const sender = mData.sender;
       debug(`chat_read ${sender}`);
       // sendChatToMember(mData, io, socket, sender, null, 'chat_read');
-      redis.smembers(chatId).then( members => {
+
+      if ( chatType == 1 ) {
+        debug(`chatType 1`);
+        const receiver = mData.receiver;
+        sendToMember( receiver, sendData( data, io, socket, 'chat_read' ) )
+      } else if (  chatType == 2 ) {
+        redis.smembers(chatId).then( members => {
         // sendToMembers( sender, mData, io, socket, users, 'chat_read' );
         sendToMembers( sender, members, sendData( data, io, socket, 'chat_read' ) );
-      }) 
+        }) 
+      } 
+      readMessage(mData);
     });
+    socket.on('invite_friend', ( data, ack ) => {
+      const parsedData = JSON.parse(data);
+      const chatId = parsedData.chat_id;
+      const users = parsedData.users;
+      const ids = parsedData.users.map( obj => obj.id);
+      const event = parsedData.event;
+      const sender = parsedData.sender;
+      const chatRoom = parsedData.chatRoom;
+      const members = chatRoom.users;
+      
+      findUserImg( members )
+      .then( findUserImg( users ) )
+      .then( () => redis.smembers(chatId) )
+      .then( result => {
+        // 이미 그룹챗에 있는 친구들에게 보냄
+        sendToMembers( sender, result, sendData( JSON.stringify({ event, sender, chat_id: chatId, users }), io, socket, event ) );
+      })
+      .then( () => {
+        //새로 추가 되는 친구들에게 보내는 챗 정보
+        const event = 'invite_group_chat';
+        sendToMembers( sender, ids, sendData( JSON.stringify({ event, chatRoom }), io, socket, event ))
+      })
+      .then( () => {
+        ack(true);
+        redis.sadd(chatId, ids);
+      })
+      addFriend(users, chatRoom);
+    })
+    socket.on('add_friend', id =>{
+      debug(`add_friend`)
+      insert('friends', { user_id : socket.info.id, friend_id: id } )
+      .then( result => debug( `add friend result ${result}`))
+    })
+    socket.on('delete_friend', id => {
+      del('friends',  { user_id : socket.info.id, friend_id: id } )
+      .then( result => debug( `del friend result ${result}`))
+    })
+    socket.on('file_upload_start', data =>{
 
+    })
+    socket.on('file_upload', data => {
+
+    })
+    socket.on('file_upload_end', data => {
+
+    })
     socket.on('disconnect', () => {
       redis.hdel('socket_list', socket.info.id);
       debug(`disconnect ${socket.info.name}`);
@@ -163,7 +225,8 @@ const createSocket = (server) => {
   });
   return io;
 };
-const test = ( users ) => {
+
+const findUserImg = ( users ) => {
   let list = [];
   for ( let user of users) {
     list.push( getProfileImage(user.id).then( img => { 
@@ -179,6 +242,7 @@ const test = ( users ) => {
   }
   return Promise.all(list);
 };
+
 const sendToMember = ( receiver, sendToUser ) => {
   debug(`method : sendToMember // send to ${receiver}`);
   getSocketId(receiver).then( socketId => {
@@ -190,10 +254,17 @@ const sendToMembers = ( sender, members, sendToUser ) => {
   for ( const member of members ) {
     if ( sender !== member ) {
       debug(`method : sendToMembers // send to ${member}`);
-      getSocketId(member).then( socketId => {
-        // sendInvite( member, socketId, io, emitParam, data);
+      isLogin(member).then( result => result)
+      .then( result => {
+        if( result ) 
+          return getSocketId(member);
+        else
+          throw `${member} is not logined so can't emit`;
+      })
+      .then( socketId => {
         sendToUser(member, socketId);
       })
+      .catch ( err => debug(err) )
     }
   }
 }
@@ -229,7 +300,7 @@ const sendChat = (userId, socketId, io, emitParam, data) => {
     io.sockets.connected[socketId].emit(emitParam, data);
   } else {
     debug('userId');
-    redis.RPUSH(`${userId}-messages`, JSON.stringify(data)).then(token => redis.hget('fire_base_token_list', userId)).then((token) => {
+    redis.RPUSH(`${userId}-messages`, data).then(token => redis.hget('fire_base_token_list', userId)).then((token) => {
       console.log('notification result ');
       const message = dataMessage(token, { hi: 'hello world', chat_type: 1 });
       return sendNotification(message);
