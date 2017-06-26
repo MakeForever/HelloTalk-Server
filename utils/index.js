@@ -1,8 +1,13 @@
 import jwt from 'jsonwebtoken';
 import fs from 'fs';
+import path from 'path';
+import Debug from 'debug';
 import { encrypt, decrypt, Hashing } from './crypto';
 import { selectUser, updateCertified } from './db/db';
 import config from '../config';
+import fileConfig from '../file_config';
+
+const debug = Debug('db/index');
 
 const validateEmail = (email) => {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -71,7 +76,7 @@ export const getProfileImage = ( userId ) => {
           if (err) {
             resolve(null);  
           } else {
-            const img = new Buffer(data, 'binary').toString('base64');
+            const img = new Buffer(data, 'binary').toString('base64')
             resolve(img);  
           }
         });
@@ -110,6 +115,38 @@ export const authorization = (token) => {
 export const getSuccess = res => rs => res.json(rs);
 export const getFail = res => err => res.status(500).json(err);
 
+export const findUserImg = ( users ) => {
+  let list = [];
+  for ( let user of users) {
+    list.push( getProfileImage(user.id).then( img => { 
+      if( img ){
+        user.img = img;
+        user.hasProfileImg = true;
+      }
+      else 
+        user.hasProfileImg = false;
+      })
+      .catch( err => debug(` err ${err}`))
+    );
+  }
+  return Promise.all(list);
+};
+
+export const profileImageRead = user => new Promise((resolve) => {
+  const resize = fileConfig.resize;
+  const filePath = path.join(__dirname, '..', 'public', 'images', 'profile', `${user.id}`, `${resize}x${resize}.png`);
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      user.img = null;
+      user.hasProfileImg = false;
+      resolve(user);
+    } else {
+      user.img = new Buffer(data, 'binary').toString('base64');
+      user.hasProfileImg = true;
+    }
+    resolve(user);
+  });
+});
 export default {
   getSuccess,
   getFail,
@@ -117,5 +154,7 @@ export default {
   createAuthUrl,
   checkAuthUrl,
   authorization,
-  getProfileImage
+  getProfileImage,
+  findUserImg,
+  profileImageRead
 };

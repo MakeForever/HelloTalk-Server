@@ -1,14 +1,13 @@
 import SocketIo from 'socket.io';
 import Debug from 'debug';
-import fs from 'fs';
-import path from 'path';
 import jwt from 'jsonwebtoken';
 import redis, { getSocketId, isLogin } from './db/redis';
 import config from '../config';
-import { selectUser, createChatRoom, insertMessage, readMessage, addFriend, insertPersonalMessage, insert, del } from './db/db';
+import { selectUser, createChatRoom, insertMessage, readMessage, addFriend, 
+  insertPersonalMessage, insert, del, getAllUsers, getMyChatRoomsId, getMyChatRoom, getMyMessages, getMyChatMembers } from './db/db';
 import { dataMessage, sendNotification } from './fcm';
 import fileConfig from '../file_config';
-import { getProfileImage } from './index';
+import { getProfileImage, findUserImg, profileImageRead } from './index';
 const debug = Debug('socket.io');
 const createSocket = (server) => {
   const io = new SocketIo(server);
@@ -47,9 +46,16 @@ const createSocket = (server) => {
         throw `${socket.info.id}-messages is empty`
     })
    .then( results => {
-      socket.emit('read_all_event', JSON.stringify(results), () => {
-        redis.del(`${socket.info.id}-messages`);
-      });
+      for ( let i = 0; i < results.length; i++ ) {
+        const data = JSON.parse(results[i]);
+        const event = data.event;
+        socket.emit(event, results[i]);
+      }
+      redis.del(`${socket.info.id}-messages`);
+
+      // socket.emit('read_all_event', JSON.stringify(results), () => {
+      //   redis.del(`${socket.info.id}-messages`);
+      // });
     })
     .catch ( err => debug(err) );
     
@@ -218,6 +224,32 @@ const createSocket = (server) => {
     socket.on('file_upload_end', data => {
 
     })
+    socket.on('if_login', data => {
+      const id = socket.info.id;
+
+      getAllUsers('beak_ya@naver.com').then( results => {
+        let list = []; 
+        results.map( users => list.push(...users));
+        return Promise.all(list.map( user => profileImageRead(user)))
+      })
+      .then( results => {
+        results.map( user => socket.emit('send_initial_state', JSON.stringify({ event: 'user', payload: user })));
+        return getMyChatRoomsId(id, 'chat_id')
+      })
+      .then( chatIds => getMyChatRoom(chatIds.map( id => id.chat_id), '*') )
+      .then( chatRooms => {
+        chatRooms.map( chatRoom => socket.emit('send_initial_state', JSON.stringify({ event: 'chatRoom', payload: chatRoom })))
+        return getMyMessages(id);
+      })
+      .then( messages => {
+        messages.map(message => socket.emit('send_initial_state', JSON.stringify({ event: 'message', payload: message })))
+        return getMyChatMembers(id)
+      })
+      .then( members => {
+        socket.emit('send_initial_state', JSON.stringify({ event: 'chat_members', payload: members }))
+      })
+      .catch( err => console.log(err))
+    })
     socket.on('disconnect', () => {
       redis.hdel('socket_list', socket.info.id);
       debug(`disconnect ${socket.info.name}`);
@@ -226,22 +258,6 @@ const createSocket = (server) => {
   return io;
 };
 
-const findUserImg = ( users ) => {
-  let list = [];
-  for ( let user of users) {
-    list.push( getProfileImage(user.id).then( img => { 
-      if( img ){
-        user.img = img;
-        user.hasProfileImg = true;
-      }
-      else 
-        user.hasProfileImg = false;
-      })
-      .catch( err => debug(` err ${err}`))
-    );
-  }
-  return Promise.all(list);
-};
 
 const sendToMember = ( receiver, sendToUser ) => {
   debug(`method : sendToMember // send to ${receiver}`);
@@ -315,19 +331,7 @@ const sendChat = (userId, socketId, io, emitParam, data) => {
   }
 };
 
-const profileImageRead = user => new Promise((resolve, reject) => {
-  const resize = fileConfig.resize;
-  const filePath = path.join(__dirname, '..', 'public', 'images', 'profile', `${user.id}`, `${resize}x${resize}.png`);
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      user.img = null;
-      resolve(user);
-    } else {
-      user.img = new Buffer(data, 'binary').toString('base64');
-    }
-    resolve(user);
-  });
-});
+
 const createSocketResultData = (result, message_id, chat_id) => ({
   result,
   message_id,

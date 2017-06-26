@@ -5,7 +5,7 @@ import {
   createToken
 } from '../crypto';
 import redis from './redis';
-import { getProfileImage } from '../index';
+import { getProfileImage, findUserImg, findUserImg2 } from '../index';
 const debug = Debug('router/db');
 const getCount = (cloumn, from, whereFields) => knex.count(cloumn).from(from).where(whereFields);
 export const selectUser = (selectField, whereFields) => knex.select(selectField).from('users').where(whereFields);
@@ -83,7 +83,7 @@ export const insertPersonalMessage = (fields) => {
         if (rs[0].count < 1) {
           Promise.all([
             insert( 'chat_room', chatRoomfieldsCreator(chatRoom)),
-            insert( 'chat_members', chatMemebersFieldsCreator( [ chatRoom.talkTo ], chatRoom.chatId) ),
+            insert( 'chat_members', chatMemebersFieldsCreator( [ chatRoom.talkTo, fields.receiver ], chatRoom.chatId) ),
           ]);
           debug(`chatId ${ chatRoom.chatId } just inserted`)
         }
@@ -156,7 +156,34 @@ export const createChatRoom = ( data ) => {
     insert('chat_members', { chat_id: chatId, user_id: user.id } ).then( result => debug(`chatID ${chatId} member ${user.id}`));
   }
 }
-
+export const getMyFriends = ( id ) => {
+  return knex.select(knex.raw('id, name, true AS ?', 'is_added')).from('users').whereIn('id', select(`friend_id`, { user_id : id }, `friends`));
+}
+export const getMyUsers = ( id ) => {
+  const chatMembersSubquery = getMyChatRoomsId(id, 'chat_id');
+  const sub2 = knex.select('friend_id').from('friends').where( { user_id: id } )
+  const sub1 = knex.select('user_id').from('chat_members').where('user_id','not in', sub2)
+                        .andWhere('chat_id', 'in', chatMembersSubquery )
+                        .andWhereNot( { user_id: id } ).groupBy('user_id')
+  return knex.select(knex.raw('id, name, false AS ?', 'is_added')).from('users').where('id', 'in', sub1);
+}
+export const getAllUsers = ( id ) => {
+  const myUsers = getMyUsers(id);
+  const myFriends = getMyFriends(id);
+  return Promise.all([myUsers, myFriends])
+}
+export const getMyChatRoomsId = ( id, selectField ) => {
+  return knex.select(selectField).from('chat_members').where( { user_id: id } )
+}
+export const getMyChatRoom = ( ids, selectFields ) => {
+  return Promise.all(ids.map( id => knex.select(selectFields).from('chat_room').where( { chat_id: id } )));
+}
+export const getMyMessages = ( id ) => {
+  return knex.select('*').from('message').where('chat_id', 'in', getMyChatRoomsId(id, 'chat_id'));
+}
+export const getMyChatMembers = ( id ) => {
+  return knex.select('chat_id', 'user_id').from('chat_members').where('chat_id', 'in', getMyChatRoomsId(id, 'chat_id')).andWhereNot( { user_id: id });
+}
 export default {
   insert,
   subscribeUser,
@@ -169,5 +196,10 @@ export default {
   readMessage,
   addFriend,
   update,
-  del
+  del,
+  getAllUsers,
+  getMyChatRoomsId,
+  getMyMessages,
+  getMyChatMembers,
+  getMyChatRoom
 };
