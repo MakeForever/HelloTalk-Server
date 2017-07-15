@@ -14,6 +14,7 @@ exports.up = function(knex, Promise) {
       }),
       knex.schema.withSchema('chat_server').createTable('chat_room', function(table) {
         table.string("chat_id").primary()
+        table.string("chat_name")
         table.string("chat_type")
         table.timestamps()
       }),
@@ -24,7 +25,8 @@ exports.up = function(knex, Promise) {
         table.string('creator_id')
         table.string('message_content')
         table.integer('message_type')
-        table.timestamps()
+        table.integer('read_count')
+        table.timestamp('created_time')
       }),
       knex.schema.withSchema('chat_server').createTable('chat_members', function(table) {
         table.increments()
@@ -32,7 +34,19 @@ exports.up = function(knex, Promise) {
         table.string('user_id')
         table.timestamps()
       }),
-
+      knex.schema.withSchema('chat_server').createTable('friends', function(table) {
+        table.increments()
+        table.string('user_id')
+        table.string('friend_id')
+        table.timestamps()
+      }),
+      knex.schema.withSchema('chat_server').createTable('chat_read', function( table ) {
+        table.increments().primary()
+        table.string('user_id')
+        table.string('message_id')
+        table.string('chat_id')
+        table.timestamp('read_time')
+      })
   ])
 };
 
