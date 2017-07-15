@@ -39,6 +39,13 @@ exports.up = function(knex, Promise) {
         table.string('user_id')
         table.string('friend_id')
         table.timestamps()
+      }),
+      knex.schema.withSchema('chat_server').createTable('chat_read', function( table ) {
+        table.increments().primary()
+        table.string('user_id')
+        table.string('message_id')
+        table.string('chat_id')
+        table.timestamp('read_time')
       })
   ])
 };

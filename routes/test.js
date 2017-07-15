@@ -1,43 +1,13 @@
 import express from 'express';
-
+import { dataMessage, sendNotification } from '../utils/fcm'; 
 const router = express.Router();
 
-const dumyData = {
-    list : [
-                {
-                    name : "number1",
-                    email : "beakya@naver.com1",
-                    gender : 1,
-                    certified : 0
-                },
-                {
-                    name : "number2",
-                    email : "beakya@naver.com2",
-                    gender : 1,
-                    certified : 0
-                },
-                {
-                    name : "number3",
-                    email : "beakya@naver.com3",
-                    gender : 1,
-                    certified : 0
-                },
-                {
-                    name : "number4",
-                    email : "beakya@naver.com4",
-                    gender : 1,
-                    certified : 0
-                },
-                {
-                    name : "number5",
-                    email : "beakya@naver.com5",
-                    gender : 1,
-                    certified : 0
-                },
-            ]
-};
 router.get( '/test', ( req, res, next ) => {
-    res.send(dumyData);
+    const token = 'cK7WM_Pc20k:APA91bFV87OfHBpMygUtsAlrfOtaj6KMsxm820LDz077-co8HkCfQCJWtL1NN_f604Rrprcky41YtjMQQFTgL1jAoAO7EOGqwsdBHVKatnpHJaL4Ia0h1d5kQgiyMTJdjuwX9rW_si_q';
+    const data = dataMessage( token, { hi: 'hello world', chat_type: 1 })
+    sendNotification(data).then ( () => {
+        console.log(`success`)
+    })
 });
 
 

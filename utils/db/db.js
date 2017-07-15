@@ -44,7 +44,9 @@ export const readMessage = ( data ) => {
       const count = result[0].read_count;
       if ( count > 0 ) {
         update( 'message', { read_count: (count - 1) }, { message_id : message } )
-        .then( result => debug(result))
+        .then( result => debug(`message update row ${result}`))
+        .then( () => insert('chat_read', { user_id: data.sender, message_id : message, chat_id: data.chat_id }) )
+        .then( result => debug(`chat read row ${result} inserted`))
       }
     });
   }
@@ -157,7 +159,7 @@ export const createChatRoom = ( data ) => {
   }
 }
 export const getMyFriends = ( id ) => {
-  return knex.select(knex.raw('id, name, true AS ?', 'is_added')).from('users').whereIn('id', select(`friend_id`, { user_id : id }, `friends`));
+  return knex.select(knex.raw('id, name, true AS ?', 'is_my_friend')).from('users').whereIn('id', select(`friend_id`, { user_id : id }, `friends`));
 }
 export const getMyUsers = ( id ) => {
   const chatMembersSubquery = getMyChatRoomsId(id, 'chat_id');
@@ -165,7 +167,7 @@ export const getMyUsers = ( id ) => {
   const sub1 = knex.select('user_id').from('chat_members').where('user_id','not in', sub2)
                         .andWhere('chat_id', 'in', chatMembersSubquery )
                         .andWhereNot( { user_id: id } ).groupBy('user_id')
-  return knex.select(knex.raw('id, name, false AS ?', 'is_added')).from('users').where('id', 'in', sub1);
+  return knex.select(knex.raw('id, name, false AS ?', 'is_my_friend')).from('users').where('id', 'in', sub1);
 }
 export const getAllUsers = ( id ) => {
   const myUsers = getMyUsers(id);
@@ -179,7 +181,12 @@ export const getMyChatRoom = ( ids, selectFields ) => {
   return Promise.all(ids.map( id => knex.select(selectFields).from('chat_room').where( { chat_id: id } )));
 }
 export const getMyMessages = ( id ) => {
-  return knex.select('*').from('message').where('chat_id', 'in', getMyChatRoomsId(id, 'chat_id'));
+  const subQuery1 = knex.select('*').from('chat_read').where({ user_id: id }).as('rd');
+  const subQuery2 = knex.select('invited_time').from('chat_invite').where( { user_id : id } )
+  const subQuery3 = knex.select('created_at').from('chat_members').whereRaw('chat_id = ms.chat_id').andWhere( { user_id: id } )
+  return knex.select('ms.*', 'rd.read_time').from('message as ms').leftOuterJoin(subQuery1, function() {
+          this.on('ms.message_id', '=', 'rd.message_id').andOn('ms.chat_id', '=', 'rd.chat_id')
+          }).where('ms.chat_id', 'in', getMyChatRoomsId(id, 'chat_id')).andWhere('ms.created_time', '>=', subQuery3);
 }
 export const getMyChatMembers = ( id ) => {
   return knex.select('chat_id', 'user_id').from('chat_members').where('chat_id', 'in', getMyChatRoomsId(id, 'chat_id')).andWhereNot( { user_id: id });

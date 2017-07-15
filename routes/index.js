@@ -1,7 +1,7 @@
 
 
 import express from 'express';
-import { insert, subscribeUser, updateCertified, checkLogin, update } from '../utils/db/db';
+import { insert, subscribeUser, updateCertified, checkLogin, update, getMyMessages } from '../utils/db/db';
 import { authEmailTemplete, getSuccess, getFail, validateRegistration , createAuthUrl,
      checkAuthUrl, authorization  } from '../utils/index';
 import { transporter, createMailOptions } from '../utils/nodemailerConfig';
@@ -116,6 +116,7 @@ router.post('get_all_my_data', ( req, res, next ) => {
     const user  = authorization(token);
     
 })
+
 //회원가입
 router.post('/user', ( req, res, next ) => {
     debug(`POST /api/user` );
@@ -143,6 +144,10 @@ router.post('/user', ( req, res, next ) => {
     }
 });
 
+//db test 나중에 지울것
+router.get('/test', (req, res, next) => {
+    
+})
 router.delete('/user', ( req, res , next ) => {
     
 })

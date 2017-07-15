@@ -8,6 +8,7 @@ import { selectUser, createChatRoom, insertMessage, readMessage, addFriend,
 import { dataMessage, sendNotification } from './fcm';
 import fileConfig from '../file_config';
 import { getProfileImage, findUserImg, profileImageRead } from './index';
+import { generateSha1 } from './crypto';
 const debug = Debug('socket.io');
 const createSocket = (server) => {
   const io = new SocketIo(server);
@@ -21,8 +22,11 @@ const createSocket = (server) => {
             // throw new Error('token invaild');
           } else {
             socket.info = decoded;
-            redis.hset('socket_list', decoded.id, socket.id);
-            redis.hset('fire_base_token_list', decoded.id, query.fire_base_token);
+            const isTemporary = query.isTemporary;
+            if ( !isTemporary ) {
+              redis.hset('socket_list', decoded.id, socket.id);
+              redis.hset('fire_base_token_list', decoded.id, query.fire_base_token);
+            }
             next();
           }
         });
@@ -38,30 +42,6 @@ const createSocket = (server) => {
   io.on('connection', (socket) => {
     debug(`socket info ${socket.info.id}  name : ${socket.info.name}`);
     debug(`socket connected socket id : ${socket.id}`);
-    redis.llen(`${socket.info.id}-messages`)
-    .then( size => {
-      if ( size > 0 ) 
-        return redis.LRANGE(`${socket.info.id}-messages`, 0, -1);
-      else
-        throw `${socket.info.id}-messages is empty`
-    })
-   .then( results => {
-      for ( let i = 0; i < results.length; i++ ) {
-        const data = JSON.parse(results[i]);
-        const event = data.event;
-        socket.emit(event, results[i]);
-      }
-      redis.del(`${socket.info.id}-messages`);
-
-      // socket.emit('read_all_event', JSON.stringify(results), () => {
-      //   redis.del(`${socket.info.id}-messages`);
-      // });
-    })
-    .catch ( err => debug(err) );
-    
-    // redis.del(`${socket.info.id}-messages`);
-    
-
     socket.on('search_friends', (data) => {
       try {
         if (!data || data.length < 4) {
@@ -224,10 +204,14 @@ const createSocket = (server) => {
     socket.on('file_upload_end', data => {
 
     })
+    socket.on('echo', data =>{
+      socket.emit("end");
+      debug(`echo`);
+    })
     socket.on('if_login', data => {
       const id = socket.info.id;
-
-      getAllUsers('beak_ya@naver.com').then( results => {
+      getAllUsers(id).then( results => {
+        debug(console.log(results))
         let list = []; 
         results.map( users => list.push(...users));
         return Promise.all(list.map( user => profileImageRead(user)))
@@ -236,19 +220,53 @@ const createSocket = (server) => {
         results.map( user => socket.emit('send_initial_state', JSON.stringify({ event: 'user', payload: user })));
         return getMyChatRoomsId(id, 'chat_id')
       })
-      .then( chatIds => getMyChatRoom(chatIds.map( id => id.chat_id), '*') )
+      .then( chatIds => getMyChatRoom( chatIds.map( id => id.chat_id), ['chat_id', 'chat_type', 'chat_name'] ))
       .then( chatRooms => {
-        chatRooms.map( chatRoom => socket.emit('send_initial_state', JSON.stringify({ event: 'chatRoom', payload: chatRoom })))
+        chatRooms.map( chatRoom => socket.emit('send_initial_state', JSON.stringify({ event: 'chatRoom', payload: chatRoom[0] })))
         return getMyMessages(id);
       })
       .then( messages => {
-        messages.map(message => socket.emit('send_initial_state', JSON.stringify({ event: 'message', payload: message })))
+        messages.map( message => socket.emit('send_initial_state', JSON.stringify({ event: 'message', payload: message })))
         return getMyChatMembers(id)
       })
       .then( members => {
-        socket.emit('send_initial_state', JSON.stringify({ event: 'chat_members', payload: members }))
+        members.map( member => socket.emit('send_initial_state', JSON.stringify({ event: 'chat_members', payload: member })))
+      })
+      .then( () => {
+        socket.emit('send_initial_state', JSON.stringify( { event: 'end', payload: true }))
       })
       .catch( err => console.log(err))
+    })
+    // socket.on('get_my_all_messages', ( data, ack ) => {
+      
+    
+    // redis.del(`${socket.info.id}-messages`);
+    
+
+    // })
+
+    socket.on('send_event_and_message', (data) => {
+      debug('send_event_and_message')
+      emitMyMessages( socket )
+      .then(emitMyEvents(socket))
+      .then( () => debug(`send success`))
+      .catch ( err => debug(err) )
+    })
+    socket.on('send_notification_data', key => {
+      debug(`send_notification_data`)
+      redis.hget(`${socket.info.id}-messages`, key)
+      .then( data => {
+        if ( data ) {
+          socket.emit( 'send_notification_data', data );
+        }
+      })
+      .then( () => {
+        return redis.hdel( `${socket.info.id}-messages`, key )
+      })
+      .then ( result => {
+        socket.emit('end');
+        debug(result)
+      })
     })
     socket.on('disconnect', () => {
       redis.hdel('socket_list', socket.info.id);
@@ -261,9 +279,19 @@ const createSocket = (server) => {
 
 const sendToMember = ( receiver, sendToUser ) => {
   debug(`method : sendToMember // send to ${receiver}`);
-  getSocketId(receiver).then( socketId => {
+  isLogin(receiver)
+  .then( result => {
+    if ( result ) {
+      return getSocketId(receiver)
+    } else {
+      throw `${receiver} is not logined so can't emit`;
+    }
+  })
+  .then( socketId => {
     sendToUser(receiver, socketId);
   })
+  .catch( err => debug( err ) )
+  
 }
 
 const sendToMembers = ( sender, members, sendToUser ) => {
@@ -292,44 +320,91 @@ const sendData = ( data, io, socket, emitParam ) => {
           debug(`send emit  param ${emitParam}`)
           io.sockets.connected[socketId].emit(emitParam, data);
         } else {
-          debug(`userId ${userId} not connected `)
-          storeNotificationToRedis(userId, data)
-          .then( rows => getFireBaseToken(userId))
-          .then( token => {
-            debug(`${userId} token : ${token}`)
-            //send notification;
-          })
-          .catch( err => debug(`err ${err}`));
-        }
+          if ( emitParam  === 'invite_group_chat' || emitParam === 'send_group_message' || emitParam === 'invite_to_personal_chat' ) {
+            debug(`userId ${userId} not connected `)
+            const key = generateSha1(Date.now('milli').toString());
+            storeNotificationToRedis(userId, key, data)
+            .then( rows => getFireBaseToken(userId))
+            .then( token => {
+              debug(`${userId} token : ${token}`)
+              const message = dataMessage(token, { key });
+              return sendNotification(message);
+            })
+            .then(() => {
+              console.log('notification success');
+            })
+            .catch( err => debug(`err ${err}`));
+          } else {
+            storeEventToRedis(userId, data)
+            .then( result => debug(result))
+          }
+      } 
     }
 }
-const storeNotificationToRedis = (userId, data) => {
-  return redis.RPUSH(`${userId}-messages`, data);
+const storeNotificationToRedis = (userId, key, data) => {
+  return redis.hset(`${userId}-messages`, key, data);
+}
+const storeEventToRedis = ( userId, data ) => {
+  return redis.rpush(`${userId}-events`, data)
 }
 const getFireBaseToken = ( userId ) => {
   return redis.hget('fire_base_token_list', userId);
 }
 
-const sendChat = (userId, socketId, io, emitParam, data) => {
-  if (io.sockets.connected[socketId]) {
-    debug('socketId');
-    io.sockets.connected[socketId].emit(emitParam, data);
-  } else {
-    debug('userId');
-    redis.RPUSH(`${userId}-messages`, data).then(token => redis.hget('fire_base_token_list', userId)).then((token) => {
-      console.log('notification result ');
-      const message = dataMessage(token, { hi: 'hello world', chat_type: 1 });
-      return sendNotification(message);
-        // TODO : handle notification
-      // return true;
-    }).then(() => {
-      console.log('notification success');
+const emitMyEvents = ( socket ) => {
+  return redis.llen(`${socket.info.id}-events`)
+  .then( size => {
+       if ( size > 0 ) 
+         return redis.LRANGE(`${socket.info.id}-events`, 0, -1);
+        else
+        throw `${socket.info.id}-events is empty`
+  })
+  .then( results => {
+      for ( let i = 0; i < results.length; i++ ) {
+        const data = JSON.parse(results[i]);
+        const event = data.event;
+        socket.emit(event, results[i]);
+      }
+      redis.del(`${socket.info.id}-events`);
+  })
+  .catch ( err => debug(err) )
+}
+const emitMyMessages = ( socket ) => {
+  return redis.hvals(`${socket.info.id}-messages`)
+    .then( messages => {
+      for ( const message of messages.reverse() ) {
+        const data = JSON.parse(message)
+        const event = data.event
+        socket.emit(event, message)
+      }
     })
-    .catch((err) => {
-      console.log(`err ${err}`);
-    });
-  }
-};
+    .then(redis.del(`${socket.info.id}-messages`))
+}
+// const sendChat = (userId, socketId, io, emitParam, data) => {
+//   if (io.sockets.connected[socketId]) {
+//     debug('socketId');
+//     io.sockets.connected[socketId].emit(emitParam, data);
+//   } else {
+//     debug('userId');
+
+//       const key = generateSha1(Date.now('milli'));
+//       debug( key )
+//       redis.hset(`${userId}-messages`, key, data)
+//       .then( token => redis.hget('fire_base_token_list', userId))
+//       .then( token => {
+//         console.log('notification result ');
+        
+//       })
+      
+//       .catch((err) => {
+//         console.log(`err ${err}`);
+//       });
+//     } else {
+      
+//     }
+    
+//   }
+// };
 
 
 const createSocketResultData = (result, message_id, chat_id) => ({

@@ -29,5 +29,9 @@ export const Hashing = (text) => {
   hash.update(text);
   return hash.digest('hex');
 };
-
-export default { encrypt, decrypt, Hashing, createToken };
+export const generateSha1 = data => {
+  const hash = crypto.createHash('sha1');
+  hash.update(data);
+  return hash.digest('hex'); 
+}
+export default { encrypt, decrypt, Hashing, createToken, generateSha1 };

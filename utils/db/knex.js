@@ -7,6 +7,7 @@ const db = knex({
     user: 'root',
     password: '',
     database: 'chat_server',
+    dateStrings: 'DATETIME'
   },
 });
 
