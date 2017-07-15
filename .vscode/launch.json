@@ -7,6 +7,24 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "nodemon",
+            "args":[
+                "--exec babel-node--debug=5858"
+            ],
+            "runtimeExecutable": "${workspaceRoot}/node_modules/nodemon/bin/nodemon.js",
+            "runtimeArgs": [
+                // " --debug=5858 --exec babel-node  "
+            ],
+            "program": "${workspaceRoot}/index.js",
+            "restart": true,
+            "port": 5858,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+
+            "type": "node",
+            "request": "launch",
             "name": "프로그램 시작",
             "program": "${workspaceRoot}/index.js",
             "cwd": "${workspaceRoot}"
