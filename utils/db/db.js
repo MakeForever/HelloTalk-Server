@@ -4,13 +4,14 @@ import knex from './knex';
 import {
   createToken
 } from '../crypto';
-import redis from './redis';
+import redis, { deleteChatRoomUserRedis } from './redis';
 import { getProfileImage, findUserImg, findUserImg2 } from '../index';
 const debug = Debug('router/db');
-const getCount = (cloumn, from, whereFields) => knex.count(cloumn).from(from).where(whereFields);
+export const getCount = (cloumn, as, from, whereFields) => knex.count(`${cloumn} as ${as}`).from(from).where(whereFields).then(rs => rs[0][as]);
 export const selectUser = (selectField, whereFields) => knex.select(selectField).from('users').where(whereFields);
 export const select = ( selectField, whereFields, table ) => knex.select(selectField).from(table).where(whereFields);
 export const insert = ( table, fields ) => knex.insert(fields).into(table);
+export const count = (field, table , where ) => knex.count(field).from(table).where(where);
 export const del = ( table, whereFields ) => knex(table).where(whereFields).del()
 export const update = ( table, fields, whereFields ) => knex(table).update(fields).where(whereFields);
 export const updateCertified = (whereQuery, updateQuery) => knex('users').update(updateQuery).where(whereQuery);
@@ -24,7 +25,7 @@ export const subscribeUser = (success, fail, fields) => {
         success(fields);
     })
     .catch((err) => {
-        dubuger(err.message);
+        debug(err.message);
         fail({message: err.message});
     })
 }
@@ -51,9 +52,16 @@ export const readMessage = ( data ) => {
     });
   }
 }
-export const addFriend = ( users, chatRoom ) => {
+export const addChatMember = ( users, chatRoom ) => {
   for( const user of users ) {
-    insert( 'chat_members', { chat_id : chatRoom.chatId, user_id: user.id } )
+    count('* as count', 'chat_members', { chat_id:chatRoom.chatId, user_id: user.id})
+    .then( rs => {
+      if ( rs[0].count ) {
+        return update('chat_members', {is_member : 1}, { chat_id : chatRoom.chatId, user_id: user.id } )
+      } else {
+        return insert( 'chat_members', { chat_id : chatRoom.chatId, user_id: user.id } )
+      }
+    })
     .then( result => debug(result))
   }
 }
@@ -69,68 +77,123 @@ export const chatMemebersFieldsCreator = (members, chatId) => {
   }));
   return result;
 };
-export const insertMessage = ( fields ) => {
-  const message = messageFieldsCreator( fields.message )
-  insert ( 'message', message ).then ( () => debug(`message inserted`)).catch ( err => debug(err))
+export const insertMessage = ( message ) => {
+  console.log(message)
+  insert ( 'message', message ).then ( () => debug(`message inserted`)).catch ( err => console.log(err))
 }
 export const insertPersonalMessage = (fields) => {
   const message = messageFieldsCreator(fields.message);
   const chatRoom = fields.chatRoom;
   insert( 'message', message )
-    .then(() => {
-      debug(`messageId ${message.messageId} inserted`)
-      getCount('chat_id as count', 'chat_room', {
-        chat_id: chatRoom.chatId
-      }).then((rs) => {
-        if (rs[0].count < 1) {
-          Promise.all([
-            insert( 'chat_room', chatRoomfieldsCreator(chatRoom)),
-            insert( 'chat_members', chatMemebersFieldsCreator( [ chatRoom.talkTo, fields.receiver ], chatRoom.chatId) ),
-          ]);
-          debug(`chatId ${ chatRoom.chatId } just inserted`)
-        }
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  .then( () => getCount('chat_id', 'count', 'chat_room', { chat_id: chatRoom.chatId }) )
+  .then( count => {
+    if ( !count ) {
+      return insert( 'chat_room', chatRoomfieldsCreator(chatRoom))
+    }
+  })
+  .then(() => getCount('user_id', 'count', 'chat_members', { chat_id: chatRoom.chatId, user_id: chatRoom.talkTo.id }))
+  .then( count => {
+    if ( !count ) {
+      return insert( 'chat_members', chatMemebersFieldsCreator( [ chatRoom.talkTo ], chatRoom.chatId) )
+    }
+  })
+  .then(() => getCount('user_id', 'count', 'chat_members', { chat_id: chatRoom.chatId, user_id: fields.receiver.id }))
+  .then( count  => {
+    if ( !count ) {
+      return insert( 'chat_members', chatMemebersFieldsCreator( [ fields.receiver ], chatRoom.chatId ))
+    }
+  })
+  .then( () => debug(`insert compliete`))
+  .catch((err) => {
+    console.log(err);
+  });
 };
+
+export const deleteChatRoom = chatId => {
+  return knex.from('chat_room').where({ chat_id: chatId}).del();
+}
+export const deleteAllChatRoomMembers = ( chatId ) => {
+  return knex.from('chat_members').where( { chat_id: chatId } ).del();
+}
+export const deleteChatRoomMemberByUserId = ( chatId, userId ) => {
+  return knex.from('chat_members').where( { chat_id: chatId, user_id: userId }).del();
+}
+export const deleteMessages = ( chatId ) => {
+  return knex.from('message').where( { chat_id: chatId } ).del();
+} 
+export const getNumberOfmember = chatId => {
+  return knex.count('* as count').from('chat_members').where( { chat_id: chatId } )
+}
+export const leaveGroupChatRoom = ( chatId, userId ) => {
+  return knex.count('* as count').from('message').where({ chat_id: chatId, creator_id: userId})
+  .then( rs => {
+    if ( rs[0].count > 0 ) {
+      return knex('chat_members').update({is_member : 0 }).where({ chat_id: chatId, user_id: userId })
+      .then(deleteChatRoomUserRedis(chatId, userId))``
+    } else {
+      return getNumberOfmember(chatId)
+      .then( data => {
+        const count = data[0].count;
+        if ( count == 1 ) {
+          deleteChatRoomMemberByUserId(chatId, userId)
+          .then(deleteChatRoom(chatId))
+          .then(deleteMessages(chatId))
+          .then(deleteChatRoomUserRedis(chatId, userId))
+          .then( debug (`count ${count} so all deleted`))
+        } else {
+          deleteChatRoomMemberByUserId(chatId, userId)
+          .then(deleteChatRoomUserRedis(chatId, userId))
+          .then(debug(`count ${count} `))
+        }
+      })
+    }
+  })
+}
+export const leavePersonalChatRoom = ( chatId ) => {
+  return deleteChatRoom(chatId)
+  .then(() => deleteAllChatRoomMembers(chatId))
+}
 export const checkLogin = (userId, hashedPassword, success, fail) => {
-  selectUser('*', {
-      id: userId,
-    })
-    .then((result) => {
-      if (!result || !result[0]) { // not found!
-        throw new Error('this email not registed!');
-      } else if (!result[0].certified) {
-        throw new Error('your are not Certified. check your email!');
-      } else if (hashedPassword !== result[0].password) {
-        throw new Error('password not collect!');
-      }
-      debug(`user ${userId} just attmpt to login ${result[0].name}`);
-      const token = createToken( { id: userId, name: result[0].name } );
-      const loginCount = result[0].first_login;
-      const hasPic = result[0].has_pic;
-      const name = result[0].name;
-      const message = 'login success!';
-      redis.hset('token_list', userId, token);
-      return getProfileImage(userId).then( img => {
+  redis.hexists('token_list', userId)
+  .then( rs => {
+    if ( !rs ) {
+      return selectUser('*', { id: userId })
+    } else {
+      throw new Error('이미 다른 디바이스에 로그인 되어 있습니다.');
+    }
+  })
+  .then( result => {
+    if (!result || !result[0]) { // not found!
+      throw new Error('등록되지 않은 아이디 입니다!');
+    } else if (!result[0].certified) {
+        throw new Error('이메일 인증이 되어 있지 않습니다');
+    } else if (hashedPassword !== result[0].password) {
+      throw new Error('비밀번호가 맞지 않습니다!');
+    }
+    debug(`user ${userId} just attmpt to login ${result[0].name}`);
+    const token = createToken( { id: userId, name: result[0].name } );
+    const loginCount = result[0].first_login;
+    const hasPic = result[0].has_pic;
+    const name = result[0].name;
+    const message = 'login success!';
+    redis.hset('token_list', userId, token);
+    return getProfileImage(userId).then( img => {
         return createLoginMessage(message, token, loginCount, name, img );
       })
-    })
-    .then( userInfo => {
-      success(userInfo);
-      return userInfo.login;
-    })
-    .then( loginCount => {
-      if ( !loginCount ) {
-        return updateFirstLogin( { first_login: 1 }, { id: userId } );
-      }
-    })
-    .catch((err) => {
-      debug(`err message ${err} `);
-      fail( { message: err.message } );
-    });
+  })
+  .then( userInfo => {
+    success(userInfo);
+    return userInfo.login;
+  })
+  .then( loginCount => {
+    if ( !loginCount ) {
+      return updateFirstLogin( { first_login: 1 }, { id: userId } );
+    }
+  })
+  .catch((err) => {
+    debug(`err message ${err} `);
+    fail( { message: err.message } );
+  });  
 };
 
 
@@ -175,22 +238,35 @@ export const getAllUsers = ( id ) => {
   return Promise.all([myUsers, myFriends])
 }
 export const getMyChatRoomsId = ( id, selectField ) => {
-  return knex.select(selectField).from('chat_members').where( { user_id: id } )
+  return knex.select(selectField).from('chat_members').where( { user_id: id } ).andWhere({is_member : 1 })
 }
 export const getMyChatRoom = ( ids, selectFields ) => {
   return Promise.all(ids.map( id => knex.select(selectFields).from('chat_room').where( { chat_id: id } )));
 }
-export const getMyMessages = ( id ) => {
-  const subQuery1 = knex.select('*').from('chat_read').where({ user_id: id }).as('rd');
-  const subQuery2 = knex.select('invited_time').from('chat_invite').where( { user_id : id } )
-  const subQuery3 = knex.select('created_at').from('chat_members').whereRaw('chat_id = ms.chat_id').andWhere( { user_id: id } )
-  return knex.select('ms.*', 'rd.read_time').from('message as ms').leftOuterJoin(subQuery1, function() {
-          this.on('ms.message_id', '=', 'rd.message_id').andOn('ms.chat_id', '=', 'rd.chat_id')
-          }).where('ms.chat_id', 'in', getMyChatRoomsId(id, 'chat_id')).andWhere('ms.created_time', '>=', subQuery3);
+export const findMyChatMembers = ( chatId, userId) => {
+  return knex.select('user_id').from('chat_members').where({ chat_id: chatId}).andWhereNot({ user_id: userId }).then( rs => rs.map( user => user.user_id))
 }
+// export const getMyMessages = ( id ) => {
+//   const subQuery1 = knex.select('*').from('chat_read').where({ user_id: id }).as('rd');
+//   const subQuery2 = knex.select('created_at').from('chat_members').whereRaw('chat_id = ms.chat_id').andWhere( { user_id: id } )
+//   return knex.select('ms.*', 'rd.read_time').from('message as ms').leftOuterJoin(subQuery1, function() {
+//           this.on('ms.message_id', '=', 'rd.message_id').andOn('ms.chat_id', '=', 'rd.chat_id')
+//           }).where('ms.chat_id', 'in', getMyChatRoomsId(id, 'chat_id')).andWhere('ms.created_time', '>=', subQuery2).orderBy('id', 'asc');
+// }
+export const getMyMessages = ( id ) => { 
+  const subQuery1 = knex.select('*').from('chat_read').where({ user_id: id }).as('rd'); 
+  const subQuery2 = knex.select('invited_time').from('chat_invite').where( { user_id : id } ) 
+  const subQuery3 = knex.select('created_at').from('chat_members').whereRaw('chat_id = ms.chat_id').andWhere( { user_id: id } ) 
+  return knex.select('ms.*', 'rd.read_time').from('message as ms').leftOuterJoin(subQuery1, function() { 
+          this.on('ms.message_id', '=', 'rd.message_id').andOn('ms.chat_id', '=', 'rd.chat_id') 
+          })
+          .where('ms.chat_id', 'in', getMyChatRoomsId(id, 'chat_id'))
+          .andWhere('ms.created_time', '>=', subQuery3); 
+} 
 export const getMyChatMembers = ( id ) => {
-  return knex.select('chat_id', 'user_id').from('chat_members').where('chat_id', 'in', getMyChatRoomsId(id, 'chat_id')).andWhereNot( { user_id: id });
+  return knex.select('chat_id', 'user_id', 'is_member').from('chat_members').where('chat_id', 'in', getMyChatRoomsId(id, 'chat_id')).andWhereNot( { user_id: id });
 }
+
 export default {
   insert,
   subscribeUser,
@@ -201,7 +277,7 @@ export default {
   messageFieldsCreator,
   createChatRoom,
   readMessage,
-  addFriend,
+  addChatMember,
   update,
   del,
   getAllUsers,
