@@ -1,0 +1,1077 @@
+
+2017-08-12 18:15:30 disconnect 박철호
+2017-08-12 18:15:37 socket info :beakya884@gmail.com  name : 박철호 socket id : Y_NQVDwIBk6GKkEfAAAD
+2017-08-12 18:15:37 send_event_and_message
+2017-08-12 18:15:37 beakya884@gmail.com-events is empty
+2017-08-12 18:15:37 send success
+2017-08-12 18:15:47 disconnect 박철호
+2017-08-12 18:15:48 socket info :beakya884@gmail.com  name : 박철호 socket id : QNLJXpMUYMZRkHTnAAAE
+2017-08-12 18:15:48 send_event_and_message
+2017-08-12 18:15:48 beakya884@gmail.com-events is empty
+2017-08-12 18:15:48 send success
+2017-08-12 18:22:39 disconnect 박철호
+2017-08-12 18:22:40 socket info :beakya884@gmail.com  name : 박철호 socket id : -knt--ckhHTINccGAAAF
+2017-08-12 18:22:40 send_event_and_message
+2017-08-12 18:22:40 beakya884@gmail.com-events is empty
+2017-08-12 18:22:40 send success
+2017-08-12 18:22:41 disconnect 박철호
+2017-08-12 18:22:42 socket info :beakya884@gmail.com  name : 박철호 socket id : 2XEonWTC6BeqhA6ZAAAG
+2017-08-12 18:22:42 send_event_and_message
+2017-08-12 18:22:42 beakya884@gmail.com-events is empty
+2017-08-12 18:22:42 send success
+2017-08-12 18:22:42 disconnect 박철호
+2017-08-12 18:22:43 socket info :beakya884@gmail.com  name : 박철호 socket id : 1d-P1wb7DMNUnUu7AAAH
+2017-08-12 18:22:43 send_event_and_message
+2017-08-12 18:22:43 beakya884@gmail.com-events is empty
+2017-08-12 18:22:43 send success
+2017-08-12 18:28:34 disconnect 박철호
+2017-08-12 18:28:36 socket info :beakya884@gmail.com  name : 박철호 socket id : ZhJ7Ck1QFR9N5urDAAAI
+2017-08-12 18:28:36 send_event_and_message
+2017-08-12 18:28:36 beakya884@gmail.com-events is empty
+2017-08-12 18:28:36 send success
+2017-08-12 18:28:38 disconnect 박철호
+2017-08-12 18:28:38 socket info :beakya884@gmail.com  name : 박철호 socket id : NQm5n4VdXYdHyfGvAAAJ
+2017-08-12 18:28:38 send_event_and_message
+2017-08-12 18:28:38 beakya884@gmail.com-events is empty
+2017-08-12 18:28:38 send success
+2017-08-12 18:28:39 disconnect 박철호
+2017-08-12 18:28:39 socket info :beakya884@gmail.com  name : 박철호 socket id : 8t2lUfyomse9d75NAAAK
+2017-08-12 18:28:39 send_event_and_message
+2017-08-12 18:28:39 send success
+2017-08-12 18:28:39 beakya884@gmail.com-events is empty
+2017-08-12 23:05:06 disconnect 박철호
+2017-08-12 23:05:45 socket info :beakya884@gmail.com  name : 박철호 socket id : khRLzM_lBfUUWvI2AAAL
+2017-08-12 23:05:45 send_event_and_message
+2017-08-12 23:05:45 beakya884@gmail.com-events is empty
+2017-08-12 23:05:45 send success
+2017-08-12 23:05:50 socket info :joseungu@naver.com  name : 조승우 socket id : UC_rIMhsTBkzStSKAAAM
+2017-08-12 23:05:50 send_event_and_message
+2017-08-12 23:05:50 send success
+2017-08-12 23:05:50 joseungu@naver.com-events is empty
+2017-08-12 23:05:55 socket info :suzi@naver.com  name : 수지 socket id : KroeZg5jG4Ci0AlUAAAN
+2017-08-12 23:05:55 send_event_and_message
+2017-08-12 23:05:55 send success
+2017-08-12 23:05:55 suzi@naver.com-events is empty
+2017-08-12 23:06:33 disconnect 박철호
+2017-08-12 23:06:35 disconnect 수지
+2017-08-12 23:06:55 socket info :beakya884@gmail.com  name : 박철호 socket id : q4E-HlqlTn-fCA57AAAO
+2017-08-12 23:06:55 send_event_and_message
+2017-08-12 23:06:55 beakya884@gmail.com-events is empty
+2017-08-12 23:06:55 send success
+2017-08-12 23:06:57 socket info :suzi@naver.com  name : 수지 socket id : ZSw_63qzTWLVVHpRAAAP
+2017-08-12 23:06:57 send_event_and_message
+2017-08-12 23:06:57 suzi@naver.com-events is empty
+2017-08-12 23:06:57 send success
+2017-08-12 23:06:59 socket info :joseungu@naver.com  name : 조승우 socket id : DrU78WZHoibYozGnAAAQ
+2017-08-12 23:06:59 send_event_and_message
+2017-08-12 23:06:59 joseungu@naver.com-events is empty
+2017-08-12 23:06:59 send success
+2017-08-12 23:07:04 send_group_message
+2017-08-12 23:07:04 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:07:04 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:07:04 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:07:04 iu@naver.com is not logined so can't emit
+2017-08-12 23:07:04 userId suzi@naver.com is connected 
+2017-08-12 23:07:04 send emit param send_group_message
+2017-08-12 23:07:04 userId joseungu@naver.com is connected 
+2017-08-12 23:07:04 send emit param send_group_message
+2017-08-12 23:07:07 disconnect 수지
+2017-08-12 23:07:08 send_group_message
+2017-08-12 23:07:08 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:07:08 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:07:08 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:07:08 iu@naver.com is not logined so can't emit
+2017-08-12 23:07:08 userId suzi@naver.com not connected 
+2017-08-12 23:07:08 userId joseungu@naver.com is connected 
+2017-08-12 23:07:08 send emit param send_group_message
+2017-08-12 23:07:08 suzi@naver.com token : fdKjXqUfcuc:APA91bFDoJE8g4rbqPiR-ll1uZIxFVZ40CRfALmpWNtz8dktncFLOipxQyI0UzemIrLq0TfEfK6BN1fizkQR7ijNzX0ct4Yux1Ug1-qqZ9SfXtZQG46spE4uB0MUOkMww6S40JhgGCVc
+2017-08-12 23:07:08 socket info :suzi@naver.com  name : 수지 socket id : ds6UORBXWuedcwzGAAAR
+2017-08-12 23:07:08 send_notification_data
+2017-08-12 23:07:08 1
+2017-08-12 23:07:08 disconnect 수지
+2017-08-12 23:07:10 socket info :suzi@naver.com  name : 수지 socket id : WxHDNCwF7z26GFdCAAAS
+2017-08-12 23:07:10 send_event_and_message
+2017-08-12 23:07:10 send success
+2017-08-12 23:07:10 suzi@naver.com-events is empty
+2017-08-12 23:07:10 chat_read suzi@naver.com
+2017-08-12 23:07:10 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:07:10 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:07:10 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:07:10 iu@naver.com is not logined so can't emit
+2017-08-12 23:07:10 userId beakya884@gmail.com is connected 
+2017-08-12 23:07:10 send emit param chat_read
+2017-08-12 23:07:10 userId joseungu@naver.com is connected 
+2017-08-12 23:07:10 send emit param chat_read
+2017-08-12 23:07:15 disconnect 박철호
+2017-08-12 23:07:20 socket info :beakya884@gmail.com  name : 박철호 socket id : mB8wN5Jc4A5mKgjvAAAT
+2017-08-12 23:07:20 send_event_and_message
+2017-08-12 23:07:20 beakya884@gmail.com-events is empty
+2017-08-12 23:07:20 send success
+2017-08-12 23:07:26 disconnect 박철호
+2017-08-12 23:07:29 socket info :beakya884@gmail.com  name : 박철호 socket id : RJczO84kWwOUf45DAAAU
+2017-08-12 23:07:29 send_event_and_message
+2017-08-12 23:07:29 beakya884@gmail.com-events is empty
+2017-08-12 23:07:29 send success
+2017-08-12 23:07:32 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:07:32 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:07:32 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:07:32 iu@naver.com is not logined so can't emit
+2017-08-12 23:07:32 userId joseungu@naver.com is connected 
+2017-08-12 23:07:32 send emit param friend_change_new_profile_image
+2017-08-12 23:07:32 userId suzi@naver.com is connected 
+2017-08-12 23:07:32 send emit param friend_change_new_profile_image
+2017-08-12 23:07:32 get_profile_img
+2017-08-12 23:07:32 get_profile_img
+2017-08-12 23:07:40 disconnect 조승우
+2017-08-12 23:07:45 chat_read joseungu@naver.com
+2017-08-12 23:07:45 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:07:45 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:07:45 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:07:45 iu@naver.com is not logined so can't emit
+2017-08-12 23:07:45 userId suzi@naver.com is connected 
+2017-08-12 23:07:45 send emit param chat_read
+2017-08-12 23:07:45 userId beakya884@gmail.com is connected 
+2017-08-12 23:07:45 send emit param chat_read
+2017-08-12 23:07:52 chatId 03d1fa36812ed3595e2554f24a9c4c0c3c34d1502871bfc5deaca02ab4ae0daa // chatType 2 // userId suzi@naver.com
+2017-08-12 23:07:52 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:07:52 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:07:52 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:07:52 err TypeError: (0 , _knex2.default)(...).update(...).where(...).then(...) is not a function
+2017-08-12 23:07:52 iu@naver.com is not logined so can't emit
+2017-08-12 23:07:52 userId beakya884@gmail.com is connected 
+2017-08-12 23:07:52 send emit param someone_leave_chat_room
+2017-08-12 23:07:52 1
+2017-08-12 23:08:21 disconnect 수지
+2017-08-12 23:08:24 socket info :iu@naver.com  name : 아이유 socket id : 4jLTqMm28jjCq7cXAAAV
+2017-08-12 23:08:24 send_event_and_message
+2017-08-12 23:08:24 iu@naver.com-events is empty
+2017-08-12 23:08:24 send success
+2017-08-12 23:08:26 chat_read iu@naver.com
+2017-08-12 23:08:26 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:08:26 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:08:26 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:08:26 suzi@naver.com is not logined so can't emit
+2017-08-12 23:08:26 userId beakya884@gmail.com is connected 
+2017-08-12 23:08:26 send emit param chat_read
+2017-08-12 23:08:26 2
+2017-08-12 23:08:32 chat_read iu@naver.com
+2017-08-12 23:08:32 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:08:32 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:08:32 userId beakya884@gmail.com is connected 
+2017-08-12 23:08:32 send emit param chat_read
+2017-08-12 23:08:32 3
+2017-08-12 23:08:52 disconnect 조승우
+2017-08-12 23:08:53 socket info :joseungu@naver.com  name : 조승우 socket id : hdfbpuXR-jm3NjLaAAAW
+2017-08-12 23:08:53 send_event_and_message
+2017-08-12 23:08:53 send success
+2017-08-12 23:08:55 socket info :joseungu@naver.com  name : 조승우 socket id : YZ1i58huWFhGFt3bAAAX
+2017-08-12 23:08:55 send_event_and_message
+2017-08-12 23:08:55 joseungu@naver.com-events is empty
+2017-08-12 23:08:55 send success
+2017-08-12 23:09:00 disconnect 조승우
+2017-08-12 23:09:07 socket info :joseungu@naver.com  name : 조승우 socket id : AFGXBUuGm_FCVvoNAAAY
+2017-08-12 23:09:07 send_event_and_message
+2017-08-12 23:09:07 joseungu@naver.com-events is empty
+2017-08-12 23:09:07 send success
+2017-08-12 23:09:09 chat_read joseungu@naver.com
+2017-08-12 23:09:09 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:09:09 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:09:09 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:09:09 suzi@naver.com is not logined so can't emit
+2017-08-12 23:09:09 userId iu@naver.com is connected 
+2017-08-12 23:09:09 send emit param chat_read
+2017-08-12 23:09:09 userId beakya884@gmail.com is connected 
+2017-08-12 23:09:09 send emit param chat_read
+2017-08-12 23:09:22 chatId 03d1fa36812ed3595e2554f24a9c4c0c3c34d1502871bfc5deaca02ab4ae0daa // chatType 2 // userId iu@naver.com
+2017-08-12 23:09:22 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:09:22 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:09:22 userId beakya884@gmail.com is connected 
+2017-08-12 23:09:22 send emit param someone_leave_chat_room
+2017-08-12 23:09:22 success
+2017-08-12 23:09:22 userId joseungu@naver.com is connected 
+2017-08-12 23:09:22 send emit param someone_leave_chat_room
+2017-08-12 23:09:45 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:09:45 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:09:45 suzi@naver.com is not logined so can't emit
+2017-08-12 23:09:45 userId joseungu@naver.com is connected 
+2017-08-12 23:09:45 send emit param invite_friend
+2017-08-12 23:09:48 disconnect 아이유
+2017-08-12 23:09:52 socket info :suzi@naver.com  name : 수지 socket id : 2z_pmTAOTJde3-jIAAAZ
+2017-08-12 23:09:52 send_event_and_message
+2017-08-12 23:09:52 suzi@naver.com-events is empty
+2017-08-12 23:09:52 send success
+2017-08-12 23:09:58 send_group_message
+2017-08-12 23:09:58 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:09:58 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:09:58 userId beakya884@gmail.com is connected 
+2017-08-12 23:09:58 send emit param send_group_message
+2017-08-12 23:09:58 userId joseungu@naver.com is connected 
+2017-08-12 23:09:58 send emit param send_group_message
+2017-08-12 23:09:58 chat_read beakya884@gmail.com
+2017-08-12 23:09:58 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:09:58 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:09:58 userId suzi@naver.com is connected 
+2017-08-12 23:09:58 send emit param chat_read
+2017-08-12 23:09:58 userId joseungu@naver.com is connected 
+2017-08-12 23:09:58 send emit param chat_read
+2017-08-12 23:09:58 chat_read joseungu@naver.com
+2017-08-12 23:09:58 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:09:58 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:09:58 userId suzi@naver.com is connected 
+2017-08-12 23:09:58 send emit param chat_read
+2017-08-12 23:09:58 userId beakya884@gmail.com is connected 
+2017-08-12 23:09:58 send emit param chat_read
+2017-08-12 23:10:11 disconnect 수지
+2017-08-12 23:10:14 socket info :iu@naver.com  name : 아이유 socket id : 65YJgw14VfQy8ahdAAAa
+2017-08-12 23:10:14 send_event_and_message
+2017-08-12 23:10:14 send success
+2017-08-12 23:10:14 iu@naver.com-events is empty
+2017-08-12 23:10:18 disconnect 조승우
+2017-08-12 23:10:48 send_group_message
+2017-08-12 23:10:48 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:10:48 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:10:48 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:10:48 suzi@naver.com is not logined so can't emit
+2017-08-12 23:10:48 userId beakya884@gmail.com is connected 
+2017-08-12 23:10:48 send emit param send_group_message
+2017-08-12 23:10:48 userId joseungu@naver.com not connected 
+2017-08-12 23:10:48 joseungu@naver.com token : c50uRhzuPh0:APA91bHC4xa3VWFKkr47WiaOI1gfHcHI9iRIOHK8zpodILIPvNBuxoONyHwdSV6zugoED1OT4gwJ51SObhgMIvwoxSWZEeLUD0MbrIbCnOK-e0Ndyr_17_n39kZLRpA5rOEx4vwPqbkt
+2017-08-12 23:10:49 socket info :joseungu@naver.com  name : 조승우 socket id : Cc805X4re9BISjNpAAAb
+2017-08-12 23:10:49 send_notification_data
+2017-08-12 23:10:49 1
+2017-08-12 23:10:49 disconnect 조승우
+2017-08-12 23:10:53 disconnect 조승우
+2017-08-12 23:10:54 socket info :joseungu@naver.com  name : 조승우 socket id : KcSaGZ8yuv_lKD0qAAAc
+2017-08-12 23:10:54 send_event_and_message
+2017-08-12 23:10:54 send success
+2017-08-12 23:10:54 joseungu@naver.com-events is empty
+2017-08-12 23:10:55 send_group_message
+2017-08-12 23:10:55 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:10:55 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:10:55 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:10:55 suzi@naver.com is not logined so can't emit
+2017-08-12 23:10:55 userId beakya884@gmail.com is connected 
+2017-08-12 23:10:55 send emit param send_group_message
+2017-08-12 23:10:55 userId joseungu@naver.com is connected 
+2017-08-12 23:10:55 send emit param send_group_message
+2017-08-12 23:10:58 chat_read joseungu@naver.com
+2017-08-12 23:10:58 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:10:58 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:10:58 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:10:58 suzi@naver.com is not logined so can't emit
+2017-08-12 23:10:58 userId iu@naver.com is connected 
+2017-08-12 23:10:58 send emit param chat_read
+2017-08-12 23:10:58 userId beakya884@gmail.com is connected 
+2017-08-12 23:10:58 send emit param chat_read
+2017-08-12 23:11:14 send_group_message
+2017-08-12 23:11:14 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:11:14 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:11:14 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:11:14 suzi@naver.com is not logined so can't emit
+2017-08-12 23:11:14 userId beakya884@gmail.com is connected 
+2017-08-12 23:11:14 send emit param send_group_message
+2017-08-12 23:11:14 userId joseungu@naver.com is connected 
+2017-08-12 23:11:14 send emit param send_group_message
+2017-08-12 23:11:25 send_group_message
+2017-08-12 23:11:25 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:11:25 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:11:25 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:11:25 suzi@naver.com is not logined so can't emit
+2017-08-12 23:11:25 userId beakya884@gmail.com is connected 
+2017-08-12 23:11:25 send emit param send_group_message
+2017-08-12 23:11:25 userId joseungu@naver.com is connected 
+2017-08-12 23:11:25 send emit param send_group_message
+2017-08-12 23:11:28 chat_read joseungu@naver.com
+2017-08-12 23:11:30 send_group_message
+2017-08-12 23:11:30 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:11:30 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:11:30 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:11:30 suzi@naver.com is not logined so can't emit
+2017-08-12 23:11:30 userId beakya884@gmail.com is connected 
+2017-08-12 23:11:30 send emit param send_group_message
+2017-08-12 23:11:30 userId joseungu@naver.com is connected 
+2017-08-12 23:11:30 send emit param send_group_message
+2017-08-12 23:11:35 chat_read joseungu@naver.com
+2017-08-12 23:11:35 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:11:35 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:11:35 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:11:35 suzi@naver.com is not logined so can't emit
+2017-08-12 23:11:35 userId iu@naver.com is connected 
+2017-08-12 23:11:35 send emit param chat_read
+2017-08-12 23:11:35 userId beakya884@gmail.com is connected 
+2017-08-12 23:11:35 send emit param chat_read
+2017-08-12 23:11:37 chat_read beakya884@gmail.com
+2017-08-12 23:11:37 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:11:37 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:11:37 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:11:37 suzi@naver.com is not logined so can't emit
+2017-08-12 23:11:37 userId iu@naver.com is connected 
+2017-08-12 23:11:37 send emit param chat_read
+2017-08-12 23:11:37 userId joseungu@naver.com is connected 
+2017-08-12 23:11:37 send emit param chat_read
+2017-08-12 23:11:41 disconnect 아이유
+2017-08-12 23:11:44 disconnect 조승우
+2017-08-12 23:11:47 disconnect 박철호
+2017-08-12 23:13:27 socket info :suzi@naver.com  name : 수지 socket id : APRRlB02vrkW4r7SAAAd
+2017-08-12 23:13:27 send_event_and_message
+2017-08-12 23:13:27 suzi@naver.com-events is empty
+2017-08-12 23:13:27 send success
+2017-08-12 23:13:32 socket info :joseungu@naver.com  name : 조승우 socket id : nXVPUalerZX-cT5KAAAe
+2017-08-12 23:13:32 send_event_and_message
+2017-08-12 23:13:32 send success
+2017-08-12 23:13:32 joseungu@naver.com-events is empty
+2017-08-12 23:15:26 socket info :beakya884@gmail.com  name : 박철호 socket id : 8hiC_n_NaWZySDRZAAAf
+2017-08-12 23:15:26 send_event_and_message
+2017-08-12 23:15:26 send success
+2017-08-12 23:15:26 beakya884@gmail.com-events is empty
+2017-08-12 23:15:28 disconnect 박철호
+2017-08-12 23:15:31 socket info :beakya884@gmail.com  name : 박철호 socket id : _geOOgqw-4AeIyeyAAAg
+2017-08-12 23:15:31 send_event_and_message
+2017-08-12 23:15:31 beakya884@gmail.com-events is empty
+2017-08-12 23:15:31 send success
+2017-08-12 23:15:41 data suzi
+2017-08-12 23:15:41 search_friends_result send
+2017-08-12 23:15:43 add_friend
+2017-08-12 23:15:43 add friend result 45
+2017-08-12 23:15:45 data jose
+2017-08-12 23:15:45 search_friends_result send
+2017-08-12 23:15:46 add_friend
+2017-08-12 23:15:46 add friend result 46
+2017-08-12 23:15:55 invite_to_chat
+2017-08-12 23:15:55 method : sendToMember // send to suzi@naver.com
+2017-08-12 23:15:55 userId suzi@naver.com is connected 
+2017-08-12 23:15:55 send emit param invite_to_personal_chat
+2017-08-12 23:15:59 chat_read suzi@naver.com
+2017-08-12 23:15:59 chatType 1
+2017-08-12 23:15:59 method : sendToMember // send to beakya884@gmail.com
+2017-08-12 23:15:59 userId beakya884@gmail.com is connected 
+2017-08-12 23:15:59 send emit param chat_read
+2017-08-12 23:16:06 invite_to_chat
+2017-08-12 23:16:06 method : sendToMember // send to beakya884@gmail.com
+2017-08-12 23:16:06 userId beakya884@gmail.com is connected 
+2017-08-12 23:16:06 send emit param invite_to_personal_chat
+2017-08-12 23:16:06 chat_read beakya884@gmail.com
+2017-08-12 23:16:06 chatType 1
+2017-08-12 23:16:06 method : sendToMember // send to suzi@naver.com
+2017-08-12 23:16:06 userId suzi@naver.com is connected 
+2017-08-12 23:16:06 send emit param chat_read
+2017-08-12 23:16:22 invite_group_chat
+2017-08-12 23:16:22 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:16:22 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:16:22 userId suzi@naver.com is connected 
+2017-08-12 23:16:22 send emit param invite_group_chat
+2017-08-12 23:16:22 userId joseungu@naver.com is connected 
+2017-08-12 23:16:22 send emit param invite_group_chat
+2017-08-12 23:16:26 send_group_message
+2017-08-12 23:16:26 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:16:26 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:16:26 userId suzi@naver.com is connected 
+2017-08-12 23:16:26 send emit param send_group_message
+2017-08-12 23:16:26 userId joseungu@naver.com is connected 
+2017-08-12 23:16:26 send emit param send_group_message
+2017-08-12 23:16:29 chat_read suzi@naver.com
+2017-08-12 23:16:29 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:16:29 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:16:29 userId beakya884@gmail.com is connected 
+2017-08-12 23:16:29 send emit param chat_read
+2017-08-12 23:16:29 userId joseungu@naver.com is connected 
+2017-08-12 23:16:29 send emit param chat_read
+2017-08-12 23:16:31 chat_read joseungu@naver.com
+2017-08-12 23:16:31 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:16:31 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:16:31 userId suzi@naver.com is connected 
+2017-08-12 23:16:31 send emit param chat_read
+2017-08-12 23:16:31 userId beakya884@gmail.com is connected 
+2017-08-12 23:16:31 send emit param chat_read
+2017-08-12 23:16:37 send_group_message
+2017-08-12 23:16:37 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:16:37 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:16:37 userId beakya884@gmail.com is connected 
+2017-08-12 23:16:37 send emit param send_group_message
+2017-08-12 23:16:37 userId joseungu@naver.com is connected 
+2017-08-12 23:16:37 send emit param send_group_message
+2017-08-12 23:16:37 chat_read beakya884@gmail.com
+2017-08-12 23:16:37 chat_read joseungu@naver.com
+2017-08-12 23:16:37 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:16:37 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:16:37 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:16:37 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:16:37 userId suzi@naver.com is connected 
+2017-08-12 23:16:37 send emit param chat_read
+2017-08-12 23:16:37 userId joseungu@naver.com is connected 
+2017-08-12 23:16:37 send emit param chat_read
+2017-08-12 23:16:37 userId suzi@naver.com is connected 
+2017-08-12 23:16:37 send emit param chat_read
+2017-08-12 23:16:37 userId beakya884@gmail.com is connected 
+2017-08-12 23:16:37 send emit param chat_read
+2017-08-12 23:16:40 send_group_message
+2017-08-12 23:16:40 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:16:40 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:16:40 userId suzi@naver.com is connected 
+2017-08-12 23:16:40 send emit param send_group_message
+2017-08-12 23:16:40 userId beakya884@gmail.com is connected 
+2017-08-12 23:16:40 send emit param send_group_message
+2017-08-12 23:16:40 chat_read beakya884@gmail.com
+2017-08-12 23:16:40 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:16:40 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:16:40 chat_read suzi@naver.com
+2017-08-12 23:16:40 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:16:40 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:16:40 userId suzi@naver.com is connected 
+2017-08-12 23:16:40 send emit param chat_read
+2017-08-12 23:16:40 userId joseungu@naver.com is connected 
+2017-08-12 23:16:40 send emit param chat_read
+2017-08-12 23:16:40 userId beakya884@gmail.com is connected 
+2017-08-12 23:16:40 send emit param chat_read
+2017-08-12 23:16:40 userId joseungu@naver.com is connected 
+2017-08-12 23:16:40 send emit param chat_read
+2017-08-12 23:16:42 disconnect 수지
+2017-08-12 23:16:44 disconnect 조승우
+2017-08-12 23:16:49 send_group_message
+2017-08-12 23:16:49 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:16:49 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:16:49 userId suzi@naver.com not connected 
+2017-08-12 23:16:49 userId joseungu@naver.com not connected 
+2017-08-12 23:16:49 suzi@naver.com token : fdKjXqUfcuc:APA91bFDoJE8g4rbqPiR-ll1uZIxFVZ40CRfALmpWNtz8dktncFLOipxQyI0UzemIrLq0TfEfK6BN1fizkQR7ijNzX0ct4Yux1Ug1-qqZ9SfXtZQG46spE4uB0MUOkMww6S40JhgGCVc
+2017-08-12 23:16:49 joseungu@naver.com token : c50uRhzuPh0:APA91bHC4xa3VWFKkr47WiaOI1gfHcHI9iRIOHK8zpodILIPvNBuxoONyHwdSV6zugoED1OT4gwJ51SObhgMIvwoxSWZEeLUD0MbrIbCnOK-e0Ndyr_17_n39kZLRpA5rOEx4vwPqbkt
+2017-08-12 23:16:50 socket info :suzi@naver.com  name : 수지 socket id : TPXR3MBD3a4tiSp0AAAh
+2017-08-12 23:16:50 socket info :joseungu@naver.com  name : 조승우 socket id : 4-XCLWI7HRrsdrMGAAAi
+2017-08-12 23:16:50 send_notification_data
+2017-08-12 23:16:50 send_notification_data
+2017-08-12 23:16:50 1
+2017-08-12 23:16:50 1
+2017-08-12 23:16:50 disconnect 조승우
+2017-08-12 23:16:50 disconnect 수지
+2017-08-12 23:16:52 socket info :suzi@naver.com  name : 수지 socket id : xHp9J3a6PYvF8iazAAAj
+2017-08-12 23:16:52 send_event_and_message
+2017-08-12 23:16:52 send success
+2017-08-12 23:16:52 suzi@naver.com-events is empty
+2017-08-12 23:16:52 chat_read suzi@naver.com
+2017-08-12 23:16:52 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:16:52 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:16:52 userId beakya884@gmail.com is connected 
+2017-08-12 23:16:52 send emit param chat_read
+2017-08-12 23:16:52 1
+2017-08-12 23:16:53 socket info :joseungu@naver.com  name : 조승우 socket id : Uhh1FYLddUMevpG8AAAk
+2017-08-12 23:16:53 send_event_and_message
+2017-08-12 23:16:53 send success
+2017-08-12 23:16:57 chat_read joseungu@naver.com
+2017-08-12 23:16:57 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:16:57 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:16:57 userId suzi@naver.com is connected 
+2017-08-12 23:16:57 send emit param chat_read
+2017-08-12 23:16:57 userId beakya884@gmail.com is connected 
+2017-08-12 23:16:57 send emit param chat_read
+2017-08-12 23:17:05 disconnect 조승우
+2017-08-12 23:17:07 disconnect 수지
+2017-08-12 23:17:08 send_group_message
+2017-08-12 23:17:08 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:17:08 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:17:08 userId suzi@naver.com not connected 
+2017-08-12 23:17:08 userId joseungu@naver.com not connected 
+2017-08-12 23:17:08 suzi@naver.com token : fdKjXqUfcuc:APA91bFDoJE8g4rbqPiR-ll1uZIxFVZ40CRfALmpWNtz8dktncFLOipxQyI0UzemIrLq0TfEfK6BN1fizkQR7ijNzX0ct4Yux1Ug1-qqZ9SfXtZQG46spE4uB0MUOkMww6S40JhgGCVc
+2017-08-12 23:17:08 joseungu@naver.com token : c50uRhzuPh0:APA91bHC4xa3VWFKkr47WiaOI1gfHcHI9iRIOHK8zpodILIPvNBuxoONyHwdSV6zugoED1OT4gwJ51SObhgMIvwoxSWZEeLUD0MbrIbCnOK-e0Ndyr_17_n39kZLRpA5rOEx4vwPqbkt
+2017-08-12 23:17:08 socket info :joseungu@naver.com  name : 조승우 socket id : txj4aUzeC3pS-ZtyAAAl
+2017-08-12 23:17:08 socket info :suzi@naver.com  name : 수지 socket id : W6X4VxzwGBOlliWaAAAm
+2017-08-12 23:17:08 send_notification_data
+2017-08-12 23:17:08 1
+2017-08-12 23:17:08 send_notification_data
+2017-08-12 23:17:08 1
+2017-08-12 23:17:08 disconnect 수지
+2017-08-12 23:17:08 disconnect 조승우
+2017-08-12 23:17:10 socket info :suzi@naver.com  name : 수지 socket id : yFiXrKT8OucmCIHEAAAn
+2017-08-12 23:17:10 send_event_and_message
+2017-08-12 23:17:10 suzi@naver.com-events is empty
+2017-08-12 23:17:10 send success
+2017-08-12 23:17:10 chat_read suzi@naver.com
+2017-08-12 23:17:10 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:17:10 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:17:10 userId beakya884@gmail.com is connected 
+2017-08-12 23:17:10 send emit param chat_read
+2017-08-12 23:17:10 1
+2017-08-12 23:17:11 socket info :joseungu@naver.com  name : 조승우 socket id : nX5GBUxHw-vsY7dtAAAo
+2017-08-12 23:17:11 send_event_and_message
+2017-08-12 23:17:11 send success
+2017-08-12 23:17:11 chat_read joseungu@naver.com
+2017-08-12 23:17:11 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:17:11 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:17:11 userId suzi@naver.com is connected 
+2017-08-12 23:17:11 send emit param chat_read
+2017-08-12 23:17:11 userId beakya884@gmail.com is connected 
+2017-08-12 23:17:11 send emit param chat_read
+2017-08-12 23:17:20 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:17:20 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:17:20 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:17:20 iu@naver.com is not logined so can't emit
+2017-08-12 23:17:20 userId beakya884@gmail.com is connected 
+2017-08-12 23:17:20 send emit param invite_friend
+2017-08-12 23:17:20 userId joseungu@naver.com is connected 
+2017-08-12 23:17:20 send emit param invite_friend
+2017-08-12 23:17:24 chatId f5450feb8df04b80eb036a5944a6c4da768a8d065603a07c141f8e06cdabc884 // chatType 2 // userId suzi@naver.com
+2017-08-12 23:17:24 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:17:24 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:17:24 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:17:24 iu@naver.com is not logined so can't emit
+2017-08-12 23:17:24 err TypeError: (0 , _knex2.default)(...).update(...).where(...).then(...) is not a function
+2017-08-12 23:17:24 userId beakya884@gmail.com is connected 
+2017-08-12 23:17:24 send emit param someone_leave_chat_room
+2017-08-12 23:17:24 userId joseungu@naver.com is connected 
+2017-08-12 23:17:24 send emit param someone_leave_chat_room
+2017-08-12 23:17:28 disconnect 수지
+2017-08-12 23:17:32 socket info :iu@naver.com  name : 아이유 socket id : z5SGkRBxQT14J-2-AAAp
+2017-08-12 23:17:32 send_event_and_message
+2017-08-12 23:17:32 iu@naver.com-events is empty
+2017-08-12 23:17:32 send success
+2017-08-12 23:17:40 send_group_message
+2017-08-12 23:17:40 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:17:40 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:17:40 userId beakya884@gmail.com is connected 
+2017-08-12 23:17:40 send emit param send_group_message
+2017-08-12 23:17:40 userId joseungu@naver.com is connected 
+2017-08-12 23:17:40 send emit param send_group_message
+2017-08-12 23:17:40 chat_read beakya884@gmail.com
+2017-08-12 23:17:40 chat_read joseungu@naver.com
+2017-08-12 23:17:40 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:17:40 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:17:40 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:17:40 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:17:40 userId iu@naver.com is connected 
+2017-08-12 23:17:40 send emit param chat_read
+2017-08-12 23:17:40 userId joseungu@naver.com is connected 
+2017-08-12 23:17:40 send emit param chat_read
+2017-08-12 23:17:40 userId iu@naver.com is connected 
+2017-08-12 23:17:40 send emit param chat_read
+2017-08-12 23:17:40 userId beakya884@gmail.com is connected 
+2017-08-12 23:17:40 send emit param chat_read
+2017-08-12 23:17:48 send_group_message
+2017-08-12 23:17:48 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:17:48 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:17:48 userId iu@naver.com is connected 
+2017-08-12 23:17:48 send emit param send_group_message
+2017-08-12 23:17:48 userId joseungu@naver.com is connected 
+2017-08-12 23:17:48 send emit param send_group_message
+2017-08-12 23:17:48 chat_read iu@naver.com
+2017-08-12 23:17:48 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:17:48 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:17:48 chat_read joseungu@naver.com
+2017-08-12 23:17:48 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:17:48 method : sendToMembers // send to beakya884@gmail.com
+2017-08-12 23:17:48 userId beakya884@gmail.com is connected 
+2017-08-12 23:17:48 send emit param chat_read
+2017-08-12 23:17:48 userId joseungu@naver.com is connected 
+2017-08-12 23:17:48 send emit param chat_read
+2017-08-12 23:17:48 userId iu@naver.com is connected 
+2017-08-12 23:17:48 send emit param chat_read
+2017-08-12 23:17:48 userId beakya884@gmail.com is connected 
+2017-08-12 23:17:48 send emit param chat_read
+2017-08-12 23:17:55 disconnect 박철호
+2017-08-12 23:17:57 socket info :beakya884@gmail.com  name : 박철호 socket id : 0jTQS9VmMutcLPfOAAAq
+2017-08-12 23:17:57 send_event_and_message
+2017-08-12 23:17:57 beakya884@gmail.com-events is empty
+2017-08-12 23:17:57 send success
+2017-08-12 23:18:01 method : sendToMembers // send to iu@naver.com
+2017-08-12 23:18:01 method : sendToMembers // send to joseungu@naver.com
+2017-08-12 23:18:01 method : sendToMembers // send to suzi@naver.com
+2017-08-12 23:18:01 suzi@naver.com is not logined so can't emit
+2017-08-12 23:18:01 userId iu@naver.com is connected 
+2017-08-12 23:18:01 send emit param friend_change_new_profile_image
+2017-08-12 23:18:01 userId joseungu@naver.com is connected 
+2017-08-12 23:18:01 send emit param friend_change_new_profile_image
+2017-08-12 23:18:01 get_profile_img
+2017-08-12 23:18:01 get_profile_img
+2017-08-12 23:27:55 disconnect 아이유
+2017-08-12 23:27:57 socket info :iu@naver.com  name : 아이유 socket id : l6coCLbLRsY-3rOGAAAr
+2017-08-12 23:27:57 send_event_and_message
+2017-08-12 23:27:57 iu@naver.com-events is empty
+2017-08-12 23:27:57 send success
+2017-08-12 23:27:58 disconnect 아이유
+2017-08-12 23:27:59 disconnect 박철호
+2017-08-12 23:28:00 disconnect 조승우
+2017-08-13 13:43:44 server start 8888
+2017-08-13 13:43:46 socket info :beakya884@gmail.com  name : 박철호 socket id : QMseXcZr-UG8qzt3AAAA
+2017-08-13 13:43:46 send_event_and_message
+2017-08-13 13:43:46 beakya884@gmail.com-events is empty
+2017-08-13 13:43:46 send success
+2017-08-13 13:43:50 disconnect 박철호
+2017-08-13 13:43:53 socket info :joseungu@naver.com  name : 조승우 socket id : bUY_DMsr6xBK3ckNAAAB
+2017-08-13 13:43:53 send_event_and_message
+2017-08-13 13:43:53 joseungu@naver.com-events is empty
+2017-08-13 13:43:53 send success
+2017-08-13 13:43:54 disconnect 조승우
+2017-08-13 13:43:57 socket info :iu@naver.com  name : 아이유 socket id : 4RCRkHp6yWwoz6zxAAAC
+2017-08-13 13:43:57 send_event_and_message
+2017-08-13 13:43:57 iu@naver.com-events is empty
+2017-08-13 13:43:57 send success
+2017-08-13 13:43:58 disconnect 아이유
+2017-08-13 13:44:20 socket info :suzi@naver.com  name : 수지 socket id : 97EdPR5FvedUpcNdAAAD
+2017-08-13 13:44:20 send_event_and_message
+2017-08-13 13:44:20 suzi@naver.com-events is empty
+2017-08-13 13:44:20 send success
+2017-08-13 13:44:27 socket info :joseungu@naver.com  name : 조승우 socket id : 8NNvt0e8uNvu46KSAAAE
+2017-08-13 13:44:27 send_event_and_message
+2017-08-13 13:44:27 send success
+2017-08-13 13:44:27 joseungu@naver.com-events is empty
+2017-08-13 13:47:40 socket info :beakya884@gmail.com  name : 박철호 socket id : jHqk1szRbSzaROaqAAAF
+2017-08-13 13:47:40 send_event_and_message
+2017-08-13 13:47:40 send success
+2017-08-13 13:47:40 beakya884@gmail.com-events is empty
+2017-08-13 13:47:44 disconnect 박철호
+2017-08-13 13:47:49 socket info :beakya884@gmail.com  name : 박철호 socket id : ZSI1jnAaf1JnVs9FAAAG
+2017-08-13 13:47:49 send_event_and_message
+2017-08-13 13:47:49 beakya884@gmail.com-events is empty
+2017-08-13 13:47:49 send success
+2017-08-13 13:48:04 add_friend
+2017-08-13 13:48:04 add friend result 47
+2017-08-13 13:48:11 add_friend
+2017-08-13 13:48:11 add friend result 48
+2017-08-13 13:48:20 beakya884@gmail.com send personal chat 
+2017-08-13 13:48:20 method : sendToMember // send to suzi@naver.com
+2017-08-13 13:48:20 userId suzi@naver.com is connected 
+2017-08-13 13:48:20 send emit param invite_to_personal_chat
+2017-08-13 13:48:25 suzi@naver.com chat_read 
+2017-08-13 13:48:25 chatType 1
+2017-08-13 13:48:25 method : sendToMember // send to beakya884@gmail.com
+2017-08-13 13:48:25 userId beakya884@gmail.com is connected 
+2017-08-13 13:48:25 send emit param chat_read
+2017-08-13 13:48:31 suzi@naver.com send personal chat 
+2017-08-13 13:48:31 method : sendToMember // send to beakya884@gmail.com
+2017-08-13 13:48:31 userId beakya884@gmail.com is connected 
+2017-08-13 13:48:31 send emit param invite_to_personal_chat
+2017-08-13 13:48:32 beakya884@gmail.com chat_read 
+2017-08-13 13:48:32 chatType 1
+2017-08-13 13:48:32 method : sendToMember // send to suzi@naver.com
+2017-08-13 13:48:32 userId suzi@naver.com is connected 
+2017-08-13 13:48:32 send emit param chat_read
+2017-08-13 13:48:45 disconnect 수지
+2017-08-13 13:48:47 beakya884@gmail.com send groupchat invite 
+2017-08-13 13:48:47 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:48:47 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:48:47 userId suzi@naver.com not connected 
+2017-08-13 13:48:47 userId joseungu@naver.com is connected 
+2017-08-13 13:48:47 send emit param invite_group_chat
+2017-08-13 13:48:47 suzi@naver.com token : fckqHbu4p2E:APA91bFc55JFU_9m_IjCMbAwOhI7Krmba--03MWW5X8qCGqLtyD_j7d0IVSfFyUVdtkqUZTZXjgv8c6absNEUWVeVW-ekNfCluTsMzi1sT_TaZsaZ3Ch7gKQmXSDlzuQfs-Ipcve-bgz
+2017-08-13 13:48:48 socket info :suzi@naver.com  name : 수지 socket id : volLZk77CAy0FNOOAAAH
+2017-08-13 13:48:48 send_notification_data
+2017-08-13 13:48:48 1
+2017-08-13 13:48:48 disconnect 수지
+2017-08-13 13:48:51 socket info :suzi@naver.com  name : 수지 socket id : EWOb0-UC8wAkAKe3AAAI
+2017-08-13 13:48:51 send_event_and_message
+2017-08-13 13:48:51 suzi@naver.com-events is empty
+2017-08-13 13:48:51 send success
+2017-08-13 13:48:58 beakya884@gmail.com send_group_message 
+2017-08-13 13:48:58 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:48:58 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:48:58 userId joseungu@naver.com is connected 
+2017-08-13 13:48:58 send emit param send_group_message
+2017-08-13 13:48:58 userId suzi@naver.com is connected 
+2017-08-13 13:48:58 send emit param send_group_message
+2017-08-13 13:48:58 suzi@naver.com chat_read 
+2017-08-13 13:48:58 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:48:58 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:48:58 userId beakya884@gmail.com is connected 
+2017-08-13 13:48:58 send emit param chat_read
+2017-08-13 13:48:58 userId joseungu@naver.com is connected 
+2017-08-13 13:48:58 send emit param chat_read
+2017-08-13 13:49:02 joseungu@naver.com chat_read 
+2017-08-13 13:49:02 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:49:02 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:49:02 userId beakya884@gmail.com is connected 
+2017-08-13 13:49:02 send emit param chat_read
+2017-08-13 13:49:02 userId suzi@naver.com is connected 
+2017-08-13 13:49:02 send emit param chat_read
+2017-08-13 13:49:04 disconnect 조승우
+2017-08-13 13:49:05 disconnect 수지
+2017-08-13 13:49:13 beakya884@gmail.com send_group_message 
+2017-08-13 13:49:13 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:49:13 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:49:13 userId joseungu@naver.com not connected 
+2017-08-13 13:49:13 userId suzi@naver.com not connected 
+2017-08-13 13:49:13 joseungu@naver.com token : c50uRhzuPh0:APA91bHC4xa3VWFKkr47WiaOI1gfHcHI9iRIOHK8zpodILIPvNBuxoONyHwdSV6zugoED1OT4gwJ51SObhgMIvwoxSWZEeLUD0MbrIbCnOK-e0Ndyr_17_n39kZLRpA5rOEx4vwPqbkt
+2017-08-13 13:49:13 suzi@naver.com token : fckqHbu4p2E:APA91bFc55JFU_9m_IjCMbAwOhI7Krmba--03MWW5X8qCGqLtyD_j7d0IVSfFyUVdtkqUZTZXjgv8c6absNEUWVeVW-ekNfCluTsMzi1sT_TaZsaZ3Ch7gKQmXSDlzuQfs-Ipcve-bgz
+2017-08-13 13:49:14 socket info :joseungu@naver.com  name : 조승우 socket id : Oq1Inh_bECLUidcsAAAJ
+2017-08-13 13:49:14 socket info :suzi@naver.com  name : 수지 socket id : 6U3Y9SU8GzzPlnknAAAK
+2017-08-13 13:49:14 send_notification_data
+2017-08-13 13:49:14 send_notification_data
+2017-08-13 13:49:14 1
+2017-08-13 13:49:14 1
+2017-08-13 13:49:14 disconnect 조승우
+2017-08-13 13:49:14 disconnect 수지
+2017-08-13 13:49:16 socket info :suzi@naver.com  name : 수지 socket id : W3J4phslcyKueMbRAAAL
+2017-08-13 13:49:16 send_event_and_message
+2017-08-13 13:49:16 suzi@naver.com-events is empty
+2017-08-13 13:49:16 send success
+2017-08-13 13:49:16 suzi@naver.com chat_read 
+2017-08-13 13:49:16 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:49:16 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:49:16 userId beakya884@gmail.com is connected 
+2017-08-13 13:49:16 send emit param chat_read
+2017-08-13 13:49:16 1
+2017-08-13 13:49:17 socket info :joseungu@naver.com  name : 조승우 socket id : k9KC5oiPXZ8GRndfAAAM
+2017-08-13 13:49:17 send_event_and_message
+2017-08-13 13:49:17 send success
+2017-08-13 13:49:17 joseungu@naver.com chat_read 
+2017-08-13 13:49:17 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:49:17 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:49:17 userId beakya884@gmail.com is connected 
+2017-08-13 13:49:17 send emit param chat_read
+2017-08-13 13:49:17 userId suzi@naver.com is connected 
+2017-08-13 13:49:17 send emit param chat_read
+2017-08-13 13:49:26 suzi@naver.com send_group_message 
+2017-08-13 13:49:26 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:49:26 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:49:26 userId beakya884@gmail.com is connected 
+2017-08-13 13:49:26 send emit param send_group_message
+2017-08-13 13:49:26 userId joseungu@naver.com is connected 
+2017-08-13 13:49:26 send emit param send_group_message
+2017-08-13 13:49:26 beakya884@gmail.com chat_read 
+2017-08-13 13:49:26 joseungu@naver.com chat_read 
+2017-08-13 13:49:26 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:49:26 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:49:26 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:49:26 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:49:26 userId joseungu@naver.com is connected 
+2017-08-13 13:49:26 send emit param chat_read
+2017-08-13 13:49:26 userId suzi@naver.com is connected 
+2017-08-13 13:49:26 send emit param chat_read
+2017-08-13 13:49:26 userId beakya884@gmail.com is connected 
+2017-08-13 13:49:26 send emit param chat_read
+2017-08-13 13:49:26 userId suzi@naver.com is connected 
+2017-08-13 13:49:26 send emit param chat_read
+2017-08-13 13:49:31 joseungu@naver.com send_group_message 
+2017-08-13 13:49:31 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:49:31 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:49:31 userId beakya884@gmail.com is connected 
+2017-08-13 13:49:31 send emit param send_group_message
+2017-08-13 13:49:31 userId suzi@naver.com is connected 
+2017-08-13 13:49:31 send emit param send_group_message
+2017-08-13 13:49:31 beakya884@gmail.com chat_read 
+2017-08-13 13:49:31 suzi@naver.com chat_read 
+2017-08-13 13:49:31 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:49:31 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:49:31 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:49:31 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:49:31 userId joseungu@naver.com is connected 
+2017-08-13 13:49:31 send emit param chat_read
+2017-08-13 13:49:31 userId suzi@naver.com is connected 
+2017-08-13 13:49:31 send emit param chat_read
+2017-08-13 13:49:31 userId beakya884@gmail.com is connected 
+2017-08-13 13:49:31 send emit param chat_read
+2017-08-13 13:49:31 userId joseungu@naver.com is connected 
+2017-08-13 13:49:31 send emit param chat_read
+2017-08-13 13:49:38 suzi@naver.com send_group_message 
+2017-08-13 13:49:38 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:49:38 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:49:38 userId beakya884@gmail.com is connected 
+2017-08-13 13:49:38 send emit param send_group_message
+2017-08-13 13:49:38 userId joseungu@naver.com is connected 
+2017-08-13 13:49:38 send emit param send_group_message
+2017-08-13 13:49:38 beakya884@gmail.com chat_read 
+2017-08-13 13:49:38 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:49:38 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:49:38 userId joseungu@naver.com is connected 
+2017-08-13 13:49:38 send emit param chat_read
+2017-08-13 13:49:38 userId suzi@naver.com is connected 
+2017-08-13 13:49:38 send emit param chat_read
+2017-08-13 13:49:38 suzi@naver.com send_group_message 
+2017-08-13 13:49:38 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:49:38 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:49:38 userId beakya884@gmail.com is connected 
+2017-08-13 13:49:38 send emit param send_group_message
+2017-08-13 13:49:38 userId joseungu@naver.com is connected 
+2017-08-13 13:49:38 send emit param send_group_message
+2017-08-13 13:49:38 beakya884@gmail.com chat_read 
+2017-08-13 13:49:38 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:49:38 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:49:38 userId joseungu@naver.com is connected 
+2017-08-13 13:49:38 send emit param chat_read
+2017-08-13 13:49:38 userId suzi@naver.com is connected 
+2017-08-13 13:49:38 send emit param chat_read
+2017-08-13 13:49:41 joseungu@naver.com chat_read 
+2017-08-13 13:49:41 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:49:41 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:49:41 userId beakya884@gmail.com is connected 
+2017-08-13 13:49:41 send emit param chat_read
+2017-08-13 13:49:41 userId suzi@naver.com is connected 
+2017-08-13 13:49:41 send emit param chat_read
+2017-08-13 13:49:54 add_friend
+2017-08-13 13:49:54 add friend result 49
+2017-08-13 13:50:02 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:50:02 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:50:02 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:50:02 iu@naver.com is not logined so can't emit
+2017-08-13 13:50:02 userId beakya884@gmail.com is connected 
+2017-08-13 13:50:02 send emit param invite_friend
+2017-08-13 13:50:02 userId joseungu@naver.com is connected 
+2017-08-13 13:50:02 send emit param invite_friend
+2017-08-13 13:50:10 suzi@naver.com send_group_message 
+2017-08-13 13:50:10 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:50:10 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:50:10 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:50:10 iu@naver.com is not logined so can't emit
+2017-08-13 13:50:10 userId beakya884@gmail.com is connected 
+2017-08-13 13:50:10 send emit param send_group_message
+2017-08-13 13:50:10 userId joseungu@naver.com is connected 
+2017-08-13 13:50:10 send emit param send_group_message
+2017-08-13 13:50:10 beakya884@gmail.com chat_read 
+2017-08-13 13:50:10 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:50:10 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:50:10 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:50:10 iu@naver.com is not logined so can't emit
+2017-08-13 13:50:10 userId joseungu@naver.com is connected 
+2017-08-13 13:50:10 send emit param chat_read
+2017-08-13 13:50:10 userId suzi@naver.com is connected 
+2017-08-13 13:50:10 send emit param chat_read
+2017-08-13 13:50:11 suzi@naver.com send_group_message 
+2017-08-13 13:50:11 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:50:11 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:50:11 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:50:11 iu@naver.com is not logined so can't emit
+2017-08-13 13:50:11 userId beakya884@gmail.com is connected 
+2017-08-13 13:50:11 send emit param send_group_message
+2017-08-13 13:50:11 userId joseungu@naver.com is connected 
+2017-08-13 13:50:11 send emit param send_group_message
+2017-08-13 13:50:11 beakya884@gmail.com chat_read 
+2017-08-13 13:50:11 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:50:11 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:50:11 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:50:11 iu@naver.com is not logined so can't emit
+2017-08-13 13:50:11 userId joseungu@naver.com is connected 
+2017-08-13 13:50:11 send emit param chat_read
+2017-08-13 13:50:11 userId suzi@naver.com is connected 
+2017-08-13 13:50:11 send emit param chat_read
+2017-08-13 13:50:18 suzi@naver.com leave chatroom // chatId 297048dbab5904259baf693ae5ee6df591f180dca44c89815072fe6f58907a47 // chatType 2
+2017-08-13 13:50:18 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:50:18 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:50:18 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:50:18 iu@naver.com is not logined so can't emit
+2017-08-13 13:50:18 err TypeError: (0 , _knex2.default)(...).update(...).where(...).then(...) is not a function
+2017-08-13 13:50:18 userId beakya884@gmail.com is connected 
+2017-08-13 13:50:18 send emit param someone_leave_chat_room
+2017-08-13 13:50:18 userId joseungu@naver.com is connected 
+2017-08-13 13:50:18 send emit param someone_leave_chat_room
+2017-08-13 13:50:21 disconnect 수지
+2017-08-13 13:50:25 socket info :iu@naver.com  name : 아이유 socket id : v5K_hbGm-gOPvhSfAAAN
+2017-08-13 13:50:25 send_event_and_message
+2017-08-13 13:50:25 iu@naver.com-events is empty
+2017-08-13 13:50:25 send success
+2017-08-13 13:50:27 iu@naver.com chat_read 
+2017-08-13 13:50:27 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:50:27 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:50:27 userId beakya884@gmail.com is connected 
+2017-08-13 13:50:27 send emit param chat_read
+2017-08-13 13:50:27 userId joseungu@naver.com is connected 
+2017-08-13 13:50:27 send emit param chat_read
+2017-08-13 13:50:29 joseungu@naver.com chat_read 
+2017-08-13 13:50:29 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:50:29 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:50:29 userId beakya884@gmail.com is connected 
+2017-08-13 13:50:29 send emit param chat_read
+2017-08-13 13:50:29 userId iu@naver.com is connected 
+2017-08-13 13:50:29 send emit param chat_read
+2017-08-13 13:50:34 iu@naver.com send_group_message 
+2017-08-13 13:50:34 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:50:34 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:50:34 userId beakya884@gmail.com is connected 
+2017-08-13 13:50:34 send emit param send_group_message
+2017-08-13 13:50:34 userId joseungu@naver.com is connected 
+2017-08-13 13:50:34 send emit param send_group_message
+2017-08-13 13:50:34 beakya884@gmail.com chat_read 
+2017-08-13 13:50:34 joseungu@naver.com chat_read 
+2017-08-13 13:50:34 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:50:34 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:50:34 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:50:34 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:50:34 userId joseungu@naver.com is connected 
+2017-08-13 13:50:34 send emit param chat_read
+2017-08-13 13:50:34 userId iu@naver.com is connected 
+2017-08-13 13:50:34 send emit param chat_read
+2017-08-13 13:50:34 userId beakya884@gmail.com is connected 
+2017-08-13 13:50:34 send emit param chat_read
+2017-08-13 13:50:34 userId iu@naver.com is connected 
+2017-08-13 13:50:34 send emit param chat_read
+2017-08-13 13:50:43 disconnect 아이유
+2017-08-13 13:50:47 socket info :iu@naver.com  name : 아이유 socket id : qc_tQkfA43pI9pkTAAAO
+2017-08-13 13:50:47 send_event_and_message
+2017-08-13 13:50:47 iu@naver.com-events is empty
+2017-08-13 13:50:47 send success
+2017-08-13 13:50:51 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:50:51 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:50:51 method : sendToMembers // send to suzi@naver.com
+2017-08-13 13:50:51 suzi@naver.com is not logined so can't emit
+2017-08-13 13:50:51 userId beakya884@gmail.com is connected 
+2017-08-13 13:50:51 send emit param friend_change_new_profile_image
+2017-08-13 13:50:51 userId joseungu@naver.com is connected 
+2017-08-13 13:50:51 send emit param friend_change_new_profile_image
+2017-08-13 13:50:51 get_profile_img
+2017-08-13 13:50:51 get_profile_img
+2017-08-13 13:52:11 disconnect 아이유
+2017-08-13 13:52:12 beakya884@gmail.com send_group_message 
+2017-08-13 13:52:12 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:52:12 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:12 userId joseungu@naver.com is connected 
+2017-08-13 13:52:12 send emit param send_group_message
+2017-08-13 13:52:12 userId iu@naver.com not connected 
+2017-08-13 13:52:12 iu@naver.com token : fckqHbu4p2E:APA91bFc55JFU_9m_IjCMbAwOhI7Krmba--03MWW5X8qCGqLtyD_j7d0IVSfFyUVdtkqUZTZXjgv8c6absNEUWVeVW-ekNfCluTsMzi1sT_TaZsaZ3Ch7gKQmXSDlzuQfs-Ipcve-bgz
+2017-08-13 13:52:12 joseungu@naver.com chat_read 
+2017-08-13 13:52:12 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:52:12 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:12 userId beakya884@gmail.com is connected 
+2017-08-13 13:52:12 send emit param chat_read
+2017-08-13 13:52:12 1
+2017-08-13 13:52:12 beakya884@gmail.com send_group_message 
+2017-08-13 13:52:12 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:52:12 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:12 userId joseungu@naver.com is connected 
+2017-08-13 13:52:12 send emit param send_group_message
+2017-08-13 13:52:12 userId iu@naver.com not connected 
+2017-08-13 13:52:12 iu@naver.com token : fckqHbu4p2E:APA91bFc55JFU_9m_IjCMbAwOhI7Krmba--03MWW5X8qCGqLtyD_j7d0IVSfFyUVdtkqUZTZXjgv8c6absNEUWVeVW-ekNfCluTsMzi1sT_TaZsaZ3Ch7gKQmXSDlzuQfs-Ipcve-bgz
+2017-08-13 13:52:12 joseungu@naver.com chat_read 
+2017-08-13 13:52:12 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:52:12 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:12 userId beakya884@gmail.com is connected 
+2017-08-13 13:52:12 send emit param chat_read
+2017-08-13 13:52:12 2
+2017-08-13 13:52:12 socket info :iu@naver.com  name : 아이유 socket id : _imuwrgL1g-yJ7fxAAAP
+2017-08-13 13:52:12 socket info :iu@naver.com  name : 아이유 socket id : LMrGGqUtvzk9IdjcAAAQ
+2017-08-13 13:52:12 send_notification_data
+2017-08-13 13:52:12 1
+2017-08-13 13:52:12 disconnect 아이유
+2017-08-13 13:52:12 send_notification_data
+2017-08-13 13:52:12 1
+2017-08-13 13:52:13 disconnect 아이유
+2017-08-13 13:52:14 beakya884@gmail.com send_group_message 
+2017-08-13 13:52:14 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:52:14 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:14 userId joseungu@naver.com is connected 
+2017-08-13 13:52:14 send emit param send_group_message
+2017-08-13 13:52:14 userId iu@naver.com not connected 
+2017-08-13 13:52:14 iu@naver.com token : fckqHbu4p2E:APA91bFc55JFU_9m_IjCMbAwOhI7Krmba--03MWW5X8qCGqLtyD_j7d0IVSfFyUVdtkqUZTZXjgv8c6absNEUWVeVW-ekNfCluTsMzi1sT_TaZsaZ3Ch7gKQmXSDlzuQfs-Ipcve-bgz
+2017-08-13 13:52:14 joseungu@naver.com chat_read 
+2017-08-13 13:52:14 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:52:14 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:14 userId beakya884@gmail.com is connected 
+2017-08-13 13:52:14 send emit param chat_read
+2017-08-13 13:52:14 3
+2017-08-13 13:52:14 socket info :iu@naver.com  name : 아이유 socket id : FvyABRfZSMbDI289AAAR
+2017-08-13 13:52:14 send_notification_data
+2017-08-13 13:52:14 1
+2017-08-13 13:52:14 disconnect 아이유
+2017-08-13 13:52:14 beakya884@gmail.com send_group_message 
+2017-08-13 13:52:14 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:52:14 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:14 userId joseungu@naver.com is connected 
+2017-08-13 13:52:14 send emit param send_group_message
+2017-08-13 13:52:14 userId iu@naver.com not connected 
+2017-08-13 13:52:14 iu@naver.com token : fckqHbu4p2E:APA91bFc55JFU_9m_IjCMbAwOhI7Krmba--03MWW5X8qCGqLtyD_j7d0IVSfFyUVdtkqUZTZXjgv8c6absNEUWVeVW-ekNfCluTsMzi1sT_TaZsaZ3Ch7gKQmXSDlzuQfs-Ipcve-bgz
+2017-08-13 13:52:14 joseungu@naver.com chat_read 
+2017-08-13 13:52:14 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:52:14 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:14 userId beakya884@gmail.com is connected 
+2017-08-13 13:52:14 send emit param chat_read
+2017-08-13 13:52:14 4
+2017-08-13 13:52:15 socket info :iu@naver.com  name : 아이유 socket id : W-a30AqgIQ_Lg-QsAAAS
+2017-08-13 13:52:15 send_notification_data
+2017-08-13 13:52:15 1
+2017-08-13 13:52:15 disconnect 아이유
+2017-08-13 13:52:15 beakya884@gmail.com send_group_message 
+2017-08-13 13:52:15 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:52:15 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:15 userId joseungu@naver.com is connected 
+2017-08-13 13:52:15 send emit param send_group_message
+2017-08-13 13:52:15 userId iu@naver.com not connected 
+2017-08-13 13:52:15 iu@naver.com token : fckqHbu4p2E:APA91bFc55JFU_9m_IjCMbAwOhI7Krmba--03MWW5X8qCGqLtyD_j7d0IVSfFyUVdtkqUZTZXjgv8c6absNEUWVeVW-ekNfCluTsMzi1sT_TaZsaZ3Ch7gKQmXSDlzuQfs-Ipcve-bgz
+2017-08-13 13:52:15 joseungu@naver.com chat_read 
+2017-08-13 13:52:15 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:52:15 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:15 userId beakya884@gmail.com is connected 
+2017-08-13 13:52:15 send emit param chat_read
+2017-08-13 13:52:15 5
+2017-08-13 13:52:15 socket info :iu@naver.com  name : 아이유 socket id : XNZnDqDtSebZaC5nAAAT
+2017-08-13 13:52:15 send_notification_data
+2017-08-13 13:52:15 1
+2017-08-13 13:52:15 disconnect 아이유
+2017-08-13 13:52:19 beakya884@gmail.com send_group_message 
+2017-08-13 13:52:19 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:52:19 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:19 userId joseungu@naver.com is connected 
+2017-08-13 13:52:19 send emit param send_group_message
+2017-08-13 13:52:19 userId iu@naver.com not connected 
+2017-08-13 13:52:19 iu@naver.com token : fckqHbu4p2E:APA91bFc55JFU_9m_IjCMbAwOhI7Krmba--03MWW5X8qCGqLtyD_j7d0IVSfFyUVdtkqUZTZXjgv8c6absNEUWVeVW-ekNfCluTsMzi1sT_TaZsaZ3Ch7gKQmXSDlzuQfs-Ipcve-bgz
+2017-08-13 13:52:19 joseungu@naver.com chat_read 
+2017-08-13 13:52:19 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:52:19 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:19 userId beakya884@gmail.com is connected 
+2017-08-13 13:52:19 send emit param chat_read
+2017-08-13 13:52:19 6
+2017-08-13 13:52:19 beakya884@gmail.com send_group_message 
+2017-08-13 13:52:19 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:52:19 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:19 userId joseungu@naver.com is connected 
+2017-08-13 13:52:19 send emit param send_group_message
+2017-08-13 13:52:19 userId iu@naver.com not connected 
+2017-08-13 13:52:19 iu@naver.com token : fckqHbu4p2E:APA91bFc55JFU_9m_IjCMbAwOhI7Krmba--03MWW5X8qCGqLtyD_j7d0IVSfFyUVdtkqUZTZXjgv8c6absNEUWVeVW-ekNfCluTsMzi1sT_TaZsaZ3Ch7gKQmXSDlzuQfs-Ipcve-bgz
+2017-08-13 13:52:19 joseungu@naver.com chat_read 
+2017-08-13 13:52:19 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:52:19 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:19 userId beakya884@gmail.com is connected 
+2017-08-13 13:52:19 send emit param chat_read
+2017-08-13 13:52:19 7
+2017-08-13 13:52:20 socket info :iu@naver.com  name : 아이유 socket id : 6chU4evhHJoiLg8-AAAU
+2017-08-13 13:52:20 send_notification_data
+2017-08-13 13:52:20 1
+2017-08-13 13:52:20 socket info :iu@naver.com  name : 아이유 socket id : cvxOj0OxAhhrC1MrAAAV
+2017-08-13 13:52:20 disconnect 아이유
+2017-08-13 13:52:20 send_notification_data
+2017-08-13 13:52:20 1
+2017-08-13 13:52:20 disconnect 아이유
+2017-08-13 13:52:20 beakya884@gmail.com send_group_message 
+2017-08-13 13:52:20 method : sendToMembers // send to joseungu@naver.com
+2017-08-13 13:52:20 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:20 userId joseungu@naver.com is connected 
+2017-08-13 13:52:20 send emit param send_group_message
+2017-08-13 13:52:20 userId iu@naver.com not connected 
+2017-08-13 13:52:20 iu@naver.com token : fckqHbu4p2E:APA91bFc55JFU_9m_IjCMbAwOhI7Krmba--03MWW5X8qCGqLtyD_j7d0IVSfFyUVdtkqUZTZXjgv8c6absNEUWVeVW-ekNfCluTsMzi1sT_TaZsaZ3Ch7gKQmXSDlzuQfs-Ipcve-bgz
+2017-08-13 13:52:20 joseungu@naver.com chat_read 
+2017-08-13 13:52:20 method : sendToMembers // send to beakya884@gmail.com
+2017-08-13 13:52:20 method : sendToMembers // send to iu@naver.com
+2017-08-13 13:52:20 userId beakya884@gmail.com is connected 
+2017-08-13 13:52:20 send emit param chat_read
+2017-08-13 13:52:20 8
+2017-08-13 13:52:20 socket info :iu@naver.com  name : 아이유 socket id : S7JE2hk8ZdFSwUHsAAAW
+2017-08-13 13:52:21 send_notification_data
+2017-08-13 13:52:21 1
+2017-08-13 13:52:21 disconnect 아이유
+2017-08-13 13:57:14 disconnect 박철호
+2017-08-13 13:57:16 disconnect 조승우
+2017-08-16 16:02:58 server start 8888
+2017-08-16 16:04:53 socket info :joseungu@naver.com  name : 조승우 socket id : uarwh_xAwG7s8ke9AAAA
+2017-08-16 16:04:53 send_event_and_message
+2017-08-16 16:04:53 joseungu@naver.com-events is empty
+2017-08-16 16:04:53 send success
+2017-08-16 16:05:07 add_friend
+2017-08-16 16:05:07 add friend result 50
+2017-08-16 16:05:11 add_friend
+2017-08-16 16:05:11 add friend result 51
+2017-08-16 16:05:16 add_friend
+2017-08-16 16:05:16 add friend result 52
+2017-08-16 16:05:24 joseungu@naver.com send_group_message 
+2017-08-16 16:05:24 method : sendToMembers // send to beakya884@gmail.com
+2017-08-16 16:05:24 method : sendToMembers // send to iu@naver.com
+2017-08-16 16:05:24 userId beakya884@gmail.com not connected 
+2017-08-16 16:05:24 userId iu@naver.com not connected 
+2017-08-16 16:05:24 beakya884@gmail.com token : fdKjXqUfcuc:APA91bFDoJE8g4rbqPiR-ll1uZIxFVZ40CRfALmpWNtz8dktncFLOipxQyI0UzemIrLq0TfEfK6BN1fizkQR7ijNzX0ct4Yux1Ug1-qqZ9SfXtZQG46spE4uB0MUOkMww6S40JhgGCVc
+2017-08-16 16:05:24 iu@naver.com token : fckqHbu4p2E:APA91bFc55JFU_9m_IjCMbAwOhI7Krmba--03MWW5X8qCGqLtyD_j7d0IVSfFyUVdtkqUZTZXjgv8c6absNEUWVeVW-ekNfCluTsMzi1sT_TaZsaZ3Ch7gKQmXSDlzuQfs-Ipcve-bgz
+2017-08-16 16:05:25 joseungu@naver.com send_group_message 
+2017-08-16 16:05:25 method : sendToMembers // send to beakya884@gmail.com
+2017-08-16 16:05:25 method : sendToMembers // send to iu@naver.com
+2017-08-16 16:05:25 userId beakya884@gmail.com not connected 
+2017-08-16 16:05:25 userId iu@naver.com not connected 
+2017-08-16 16:05:25 beakya884@gmail.com token : fdKjXqUfcuc:APA91bFDoJE8g4rbqPiR-ll1uZIxFVZ40CRfALmpWNtz8dktncFLOipxQyI0UzemIrLq0TfEfK6BN1fizkQR7ijNzX0ct4Yux1Ug1-qqZ9SfXtZQG46spE4uB0MUOkMww6S40JhgGCVc
+2017-08-16 16:05:25 iu@naver.com token : fckqHbu4p2E:APA91bFc55JFU_9m_IjCMbAwOhI7Krmba--03MWW5X8qCGqLtyD_j7d0IVSfFyUVdtkqUZTZXjgv8c6absNEUWVeVW-ekNfCluTsMzi1sT_TaZsaZ3Ch7gKQmXSDlzuQfs-Ipcve-bgz
+2017-08-16 16:05:26 joseungu@naver.com send_group_message 
+2017-08-16 16:05:26 method : sendToMembers // send to beakya884@gmail.com
+2017-08-16 16:05:26 method : sendToMembers // send to iu@naver.com
+2017-08-16 16:05:26 userId beakya884@gmail.com not connected 
+2017-08-16 16:05:26 userId iu@naver.com not connected 
+2017-08-16 16:05:26 beakya884@gmail.com token : fdKjXqUfcuc:APA91bFDoJE8g4rbqPiR-ll1uZIxFVZ40CRfALmpWNtz8dktncFLOipxQyI0UzemIrLq0TfEfK6BN1fizkQR7ijNzX0ct4Yux1Ug1-qqZ9SfXtZQG46spE4uB0MUOkMww6S40JhgGCVc
+2017-08-16 16:05:26 iu@naver.com token : fckqHbu4p2E:APA91bFc55JFU_9m_IjCMbAwOhI7Krmba--03MWW5X8qCGqLtyD_j7d0IVSfFyUVdtkqUZTZXjgv8c6absNEUWVeVW-ekNfCluTsMzi1sT_TaZsaZ3Ch7gKQmXSDlzuQfs-Ipcve-bgz

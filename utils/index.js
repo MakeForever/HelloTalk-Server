@@ -2,11 +2,14 @@ import jwt from 'jsonwebtoken';
 import fs from 'fs';
 import path from 'path';
 import Debug from 'debug';
-import { encrypt, decrypt, Hashing } from './crypto';
+import jade from 'jade';
+import juice from 'juice';
+
+import { encrypt, decrypt, Hashing, generateSha1 } from './crypto';
 import { selectUser, updateCertified } from './db/db';
 import config from '../config';
 import fileConfig from '../file_config';
-
+const moment = require('moment');
 const debug = Debug('db/index');
 
 const validateEmail = (email) => {
@@ -58,7 +61,9 @@ export const checkAuthUrl = (cryptogram, success, fail, test) => {
       }
       updateCertified({ id: email }, { certified: 1 })
           .then(() => {
-            test('<script>alert("인증되었습니다.")</script>');
+            const fn = jade.compileFile( __dirname + '/../views/auth_result.jade');
+            const html = fn();
+            test(html);
           });
     })
 
@@ -83,28 +88,12 @@ export const getProfileImage = ( userId ) => {
   });
 }
 
-export const authEmailTemplete = address => `<!DOCTYPE html>
-    <html lang="ko">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_green-blue.min.css" /> 
-        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <style>
-            body {
-                text-align: center;
-                }
-        </style>
-    </head>
-    <body>
-        <h1>회원가입을 진심으로 축하합니다!</h1>
-        <p>인증을 하실려면 아래의 버튼을 눌러주세요<p>
-        <a href="http://127.0.0.1:8080/api/auth?code=${address}">인증</a>
-    </body>
-    
-    </html>`;
+export const authEmailTemplete = data => {
+  const fn = jade.compileFile( __dirname + '/../views/email.jade');
+  const test = fn(data);
+  const html = juice(test);
+  return html;
+}
 export const createAuthUrl = original => encrypt(original);
 
 export const authorization = (token) => {
@@ -131,7 +120,19 @@ export const findUserImg = ( users ) => {
   }
   return Promise.all(list);
 };
-
+export const systemMessageCreator = ( chatId , message ) => {
+  const time = new Date().getTime();
+  const chat_id = chatId;
+  const message_id = generateSha1(time.toString());
+  const created_time = moment().format('YYYY-MM-DD HH:mm:ss');
+  const creator_id = 'system';
+  const message_type = 1;
+  const read_count = 0;
+  const message_content = message;
+  return {
+    chat_id , message_id, created_time, creator_id, message_type, read_count, message_content
+  }
+}
 export const profileImageRead = user => new Promise((resolve) => {
   const resize = fileConfig.resize;
   const filePath = path.join(__dirname, '..', 'public', 'images', 'profile', `${user.id}`, `${resize}x${resize}.png`);

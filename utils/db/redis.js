@@ -13,4 +13,5 @@ export const addChatToRedis = (chatName, members) => {
 };
 export const getSocketId = id => redis.hget('socket_list', id);
 export const isLogin = id => redis.HEXISTS('token_list', id);
+export const deleteChatRoomUserRedis = ( chatId, id ) => redis.srem(chatId, id);
 export default redis;

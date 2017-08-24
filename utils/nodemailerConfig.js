@@ -10,10 +10,10 @@ const transporter = nodemailer.createTransport({
 });
 
 const createMailOptions = (info, content) => ({
-  from: '"Fred Foo 👻" <AppChatGood@gmail.com>', // sender address
+  from: '"Hello Talk" <AppChatGood@gmail.com>', // sender address
   to: `${info.id}`, // list of receivers
-  subject: 'Hello ✔', // Subject line
-  text: 'Hello world ?', // plain text body
+  subject: `Hello ${info.name}`, // Subject line
+  text: 'Welcome my Friend', // plain text body
   html: content,
 });
 
